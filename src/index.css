@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #16a085;
+  --color-secondary: #a01631;
+}
+.nav-text{
+    @apply  md:pr-4 text-primary font-semibold
+}
+
