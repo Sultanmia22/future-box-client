@@ -1,7 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../Auth/AuthContext';
 
 const Navbar = () => {
+ 
     const links = <>
         <NavLink className='nav-text'>Home</NavLink>
         <NavLink className='nav-text'>Explore Artworks</NavLink>
@@ -32,7 +34,7 @@ const Navbar = () => {
   <div className="navbar-end">
     <div className='flex items-center gap-3'>
         <button className='btn btn-outline border border-primary text-primary hover:bg-primary hover:text-white'> Sign In </button>
-        <button className='btn btn-outline border border-secondary text-secondary hover:bg-secondary hover:text-white'> Sign UP </button>
+        <Link to='/registration' className='btn btn-outline border border-secondary text-secondary hover:bg-secondary hover:text-white'> Sign UP </Link>
     </div>
   </div>
 </div>
