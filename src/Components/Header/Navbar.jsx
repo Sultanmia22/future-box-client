@@ -1,16 +1,35 @@
-import React, { use } from 'react';
+
+import { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Auth/AuthContext';
+import { toast } from 'react-toastify';
+
 
 const Navbar = () => {
- 
+
+ const {user,signOutUser} = use(AuthContext)
+
     const links = <>
         <NavLink className='nav-text'>Home</NavLink>
         <NavLink className='nav-text'>Explore Artworks</NavLink>
-        <NavLink className='nav-text'>Add Artwork</NavLink>
+        {user && <>
+         <NavLink className='nav-text'>Add Artwork</NavLink>
         <NavLink className='nav-text'>My Gallery</NavLink>
         <NavLink className='nav-text'>My Favorites</NavLink>
+        </>}
     </>
+
+      const handleSignOut = () => {
+        signOutUser()
+        .then(res => {
+          toast.success('Sign Out Successfully')
+        })
+        .catch(er => {
+          const error = er.message;
+          toast.error(error)
+        })
+      }
+
     return (
     <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -32,10 +51,18 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <div className='flex items-center gap-3'>
-        <button className='btn btn-outline border border-primary text-primary hover:bg-primary hover:text-white'> Sign In </button>
+    {
+      user ?
+       <div className='flex items-center gap-3'>
+        <Link to='/login' className='btn btn-outline border border-primary text-primary hover:bg-primary hover:text-white'> {user.displayName} </Link>
+        <button onClick={handleSignOut} className='btn btn-outline border border-secondary text-secondary hover:bg-secondary hover:text-white'> Sign Out </button>
+    </div>
+        : 
+        <div className='flex items-center gap-3'>
+        <Link to='/login' className='btn btn-outline border border-primary text-primary hover:bg-primary hover:text-white'> Sign In </Link>
         <Link to='/registration' className='btn btn-outline border border-secondary text-secondary hover:bg-secondary hover:text-white'> Sign UP </Link>
     </div>
+    }
   </div>
 </div>
     );

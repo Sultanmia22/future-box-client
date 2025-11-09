@@ -61,7 +61,7 @@ const Footer = () => {
 
             </footer>
             <div className=' h-[1px] bg-base-300 mx-10'></div>
-            <p className='text-center text-white'>© 2025 AR<span className='text-yellow-400'>TI</span>FY. All rights reserved.</p>
+            <p className='text-center text-white py-5'>© 2025 AR<span className='text-yellow-400'>TI</span>FY. All rights reserved.</p>
         </div>
     );
 };
