@@ -7,7 +7,9 @@ const MainLayouts = () => {
     return (
         <div className='flex flex-col min-h-screen'>
            <Header/>
-           <div className='flex-grow'> <Outlet/> </div>
+            <div className='bg-[#dfe6e9]'>
+                  <div className='flex-grow  max-w-[1600px] mx-auto'> <Outlet/> </div>
+            </div>
            <Footer/>
         </div>
     );
