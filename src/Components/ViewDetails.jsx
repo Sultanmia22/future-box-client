@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillLike } from 'react-icons/ai';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 
 const ViewDetails = () => {
 
     const { id } = useParams()
     const [viewData, setViewData] = useState({})
     const [loading, setLoading] = useState(true)
+    const [fetchs,reFetchs] = useState(true)
 
     // const {id,image,title,artist_name,category,created_at,email,description,price,visibility,rating,medium,like_count,artist_info_name,artist_info_photo,artist_info_total_artworks} = viewData
 
-
+    //! fetch data for view details 
     useEffect(() => {
         fetch(`http://localhost:4011/viewDetails/${id}`)
             .then(res => res.json())
@@ -18,7 +19,19 @@ const ViewDetails = () => {
                 setViewData(data)
                 setLoading(false)
             })
-    }, [id])
+    }, [id,fetchs])
+
+    //! handle like count fucntion 
+    const handleLikeCount = (id) => {
+        fetch(`http://localhost:4011/likeCount/${id}`,{
+            method:'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('after data',data)
+            reFetchs(!fetchs)
+        })
+    }
 
     if (loading) {
         return <div className='text-2xl text-center'> Loading </div>
@@ -67,7 +80,7 @@ const ViewDetails = () => {
                 </div>
 
                 <div className='py-5 flex justify-between'>
-                    <button className='px-5 py-[1px] bg-primary rounded-full'> <AiFillLike className='text-white' size={20} /> </button>
+                    <Link  onClick={() => handleLikeCount(viewData._id)} className='px-5 py-[1px] bg-primary rounded-full flex items-center gap-1'> <span><AiFillLike className='text-white' size={20} /></span> <span className='text-white font-bold'>{viewData.like_count}</span></Link>
                     <button className='btn bg-primary text-white'>Add to Favorites</button>
                 </div>
             </div>
