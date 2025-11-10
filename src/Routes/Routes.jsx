@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import Registration from "../Pages/Registration";
 import Login from "../Pages/Login";
 import ViewDetails from "../Components/ViewDetails";
+import PrivertRouts from "../PrivetRoutes/PrivertRouts";
+import ExploreArtwork from "../Pages/ExploreArtwork";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,14 @@ const router = createBrowserRouter([
 
       {
         path:'/viewDetails/:id',
-        element: <ViewDetails/>
+        element: <PrivertRouts>
+          <ViewDetails/>
+        </PrivertRouts>
+      },
+
+      {
+        path:'/exploreArtwork',
+        element:<ExploreArtwork/>
       }
     ]
   },

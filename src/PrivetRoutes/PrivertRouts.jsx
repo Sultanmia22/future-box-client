@@ -11,7 +11,7 @@ const PrivertRouts = ({children}) => {
     return children
    }
    else{
-    return <Navigate className='/login'> </Navigate>
+    return <Navigate to='/login'> </Navigate>
    }
 };
 

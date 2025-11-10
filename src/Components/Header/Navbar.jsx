@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const links = <>
     <NavLink className='nav-text'>Home</NavLink>
-    <NavLink className='nav-text'>Explore Artworks</NavLink>
+    <NavLink to='/exploreArtwork' className='nav-text'>Explore Artworks</NavLink>
     {user && <>
       <NavLink className='nav-text'>Add Artwork</NavLink>
       <NavLink className='nav-text'>My Gallery</NavLink>
@@ -62,8 +62,8 @@ const Navbar = () => {
 
                 {
                   show &&
-                  <div className=' absolute bg-primary px-10 py-2 rounded-lg top-20 right-2 z-10'>
-                    <p className='pb-2 text-white font-medium'> {user?.displayName} </p>
+                  <div className=' absolute bg-white shadow border border-gray-400 px-10 py-2 rounded-lg top-13 right-1 z-10'>
+                    <p className='pb-2 text-gray-600 font-medium'> {user?.displayName} </p>
                     <button onClick={handleSignOut} className='btn btn-outline border border-secondary text-secondary hover:bg-secondary hover:text-white'> Sign Out </button>
                   </div>
                 }

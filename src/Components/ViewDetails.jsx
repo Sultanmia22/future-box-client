@@ -25,7 +25,7 @@ const ViewDetails = () => {
     }
 
     return (
-        <div className='flex bg-base-100 shadow-sm my-10 p-10 rounded-xl gap-10'>
+        <div className='flex flex-col md:flex-row bg-base-100 shadow-sm my-10 p-10 rounded-xl gap-10'>
 
             <div className='left border-2 border-primary rounded-lg md:h-[800px]'>
                 <figure>
@@ -35,10 +35,10 @@ const ViewDetails = () => {
 
 
             <div className='right flex-1'>
-                <h2 className='text-4xl font-semibold text-primary'> {viewData.title} </h2>
+                <h2 className=' text-xl md:text-4xl font-semibold text-primary'> {viewData.title} </h2>
                 <div className='flex gap-2 items-center'>
                     <button className='px-3 py-1 bg-primary text-white rounded-full my-3'>{viewData.category} </button>
-                    <button className='px-3 py-1 bg-secondary text-white rounded-full my-3'> {viewData.medium} </button>
+                    <button className=' md:px-3 px-1 py-1 bg-secondary text-white rounded-full my-3'> {viewData.medium} </button>
                 </div>
 
                 <div>
@@ -48,18 +48,18 @@ const ViewDetails = () => {
 
 
                 <div className='artist_info bg-green-100 text-3xl font-semibold mt-10 p-5 rounded-xl'>
-                    <h2 className='pb-2 text-gray-600'> Artist Information: </h2>
+                    <h2 className='pb-2 text-xl md:text-3xl text-gray-600 text-center md:text-start'> Artist Information: </h2>
                     <div className='w-full h-[2px] bg-gray-600 mb-3'></div>
-                    <div className='flex gap-5'>
-                        <div className='left-side border-2 border-white rounded-full'>
+                    <div className='flex flex-col md:flex-row gap-5'>
+                        <div className='left-side border-2 border-white rounded-full w-[100px] h-[100px] mx-auto md:mx-0'>
                             <figure>
-                                <img src={viewData?.artist_info_photo} alt="" className='w-[100px] h-[100px] object-fill p0 rounded-full' />
+                                <img src={viewData?.artist_info_photo} alt="" className='w-[100px] h-[100px] mx-auto md:mx-0 object-fill p0 rounded-full' />
                             </figure>
                         </div>
 
                         <div className='right-sise'>
-                            <div>
-                                <h2 className='text-2xl text-gray-600 font-semibold pb-2'>Name : Elena Rodriguez</h2>
+                            <div className='text-center md:text-start'>
+                                <h2 className=' text-xl font-normal md:text-2xl text-gray-600 md:font-semibold pb-2'>Name : Elena Rodriguez</h2>
                                 <p className='text-[18px]'>Total Artwork : {viewData.artist_info_total_artworks} </p>
                             </div>
                         </div>
