@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from '../Components/Slider';
 import MostRecent from '../Components/MostRecent';
 import TopArtist from '../Components/TopArtist';
+import Highlist from '../Components/Highlist';
 
 const Home = () => {
 
@@ -27,6 +28,7 @@ const Home = () => {
            <Slider/>
            <MostRecent artworkData={artworkData} />
            <TopArtist/>
+           <Highlist/>
         </div>
     );
 };

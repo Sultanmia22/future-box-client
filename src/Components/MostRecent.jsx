@@ -1,5 +1,6 @@
 import React from 'react';
 import ratingIcon from '../assets/star.png'
+import { Link } from 'react-router';
 const MostRecent = ({ artworkData }) => {
     console.log(artworkData)
 
@@ -72,7 +73,7 @@ const MostRecent = ({ artworkData }) => {
                                     </div>
 
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">View Details</button>
+                                        <Link to={`/viewDetails/${data._id}`} className="btn btn-primary">View Details</Link>
                                     </div>
                                 </div>
                             </div>
