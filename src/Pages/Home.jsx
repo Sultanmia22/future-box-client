@@ -13,7 +13,7 @@ const Home = () => {
         fetch(`http://localhost:4011/artworks`)
         .then(res => res.json())
         .then(data => {
-            console.log('after fetch data',data)
+            // console.log('after fetch data',data)
             setartWorkData(data)
             setLoading(false)
         })

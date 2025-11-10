@@ -17,7 +17,7 @@ const Registration = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         
-        console.log({displayName,photoURL,email,password})
+        // console.log({displayName,photoURL,email,password})
 
        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 

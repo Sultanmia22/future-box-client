@@ -2,42 +2,9 @@ import React from 'react';
 import ratingIcon from '../assets/star.png'
 import { Link } from 'react-router';
 const MostRecent = ({ artworkData }) => {
-    console.log(artworkData)
+    // console.log(artworkData)
 
-    //     artist_name
-    // : 
-    // "Yuki Tanaka"
-    // category
-    // : 
-    // "Digital Art"
-    // created_at
-    // : 
-    // "2024-06-12"
-    // description
-    // : 
-    // "Neon Nights is a vibrant depiction of nightlife and neon lights. \nBright colors and glowing elements create a futuristic feel. \nThe artwork immerses viewers in the energy of city nights. \nDigital textures enhance depth and motion in the composition. \nIt captures the excitement, allure, and mystery of urban evenings."
-    // email
-    // : 
-    // "yuki.tanaka@neonart.com"
-    // image
-    // : 
-    // "https://i.ibb.co.com/60mx9pqk/Neon-Nights.jpg"
-    // price
-    // : 
-    // 380
-    // rating
-    // : 
-    // 4.7
-    // title
-    // : 
-    // "Neon Nights"
-    // visibility
-    // : 
-    // "private"
-    // _id
-    // : 
-    // "6910bed2eae48629c1b60ac3"
-
+   
     return (
         <div className='pb-20'>
             <h2 className='text-4xl font-semibold text-primary text-center py-5'> Most Recent </h2>
