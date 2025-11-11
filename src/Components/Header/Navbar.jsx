@@ -16,7 +16,7 @@ const Navbar = () => {
     {user && <>
       <NavLink className='nav-text'>Add Artwork</NavLink>
       <NavLink className='nav-text'>My Gallery</NavLink>
-      <NavLink className='nav-text'>My Favorites</NavLink>
+      <NavLink to='/myfavourite' className='nav-text'>My Favorites</NavLink>
     </>}
   </>
 

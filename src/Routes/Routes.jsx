@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import ViewDetails from "../Components/ViewDetails";
 import PrivertRouts from "../PrivetRoutes/PrivertRouts";
 import ExploreArtwork from "../Pages/ExploreArtwork";
+import MyFavourite from "../Pages/MyFavourite";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
       {
         path:'/exploreArtwork',
         element:<ExploreArtwork/>
+      },
+
+      {
+        path:'/myfavourite',
+        element:<MyFavourite/>
       }
     ]
   },
