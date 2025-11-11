@@ -2,10 +2,13 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Auth/AuthContext';
 import ratingIcon from '../assets/star.png'
 import { Link } from 'react-router';
+import { toast } from 'react-toastify';
+import noDataImg from '../assets/download.png'
 const MyFavourite = () => {
 
     const { user } = use(AuthContext)
     const [favouriteData, setFavouriteData] = useState([])
+    const [fetchs,reFetchs] = useState(true)
 
     useEffect(() => {
         fetch(`http://localhost:4011/myfavourite?email=${user?.email}`)
@@ -14,9 +17,27 @@ const MyFavourite = () => {
                 console.log('after fetch data', data)
                 setFavouriteData(data)
             })
-    }, [user])
+    }, [user,fetchs])
 
+    //! handle unfavorite function 
+    const handleUnfavorite = (id) => {
+        fetch(`http://localhost:4011/unfavorite/${id}`,{
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('after unfavorite ',data)
+            toast.success('Unfavorite Successfully');
+            reFetchs(!fetchs)
+        })
+    }
 
+    if(favouriteData.length === 0){
+        return <div className='flex  flex-col justify-center items-center min-h-screen'>
+            <img src={noDataImg} alt="" className='md:w-[300px] md:h-[300px]' />
+               <h2 className='text-3xl text-primary'> No Favourite Data Availabe </h2>
+              </div>
+    }
 
     return (
         <div>
@@ -52,7 +73,7 @@ const MyFavourite = () => {
 
                             <div className='right_side flex flex-col items-center justify-center'>
                                 <div className="">
-                                    <Link to={`/viewDetails/${data._id}`} className="btn btn-primary">Unfavorite</Link>
+                                    <button onClick={() => handleUnfavorite(data._id)} className="btn btn-primary">Unfavorite</button>
                                 </div>
                             </div>
                         </div>
