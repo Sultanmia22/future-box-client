@@ -74,10 +74,7 @@ const ExploreArtwork = () => {
                                             <h2 className="card-title text-2xl font-semibold">{data.title}</h2>
                                             <p className='text-gray-500'>Artist : {data.artist_name}</p>
                                         </div>
-                                        <div className='flex items-center gap-1'>
-                                             <img src={ratingIcon} alt="" className='w-3 h-3' />
-                                            <p>  {data.rating} </p>
-                                        </div>
+                                       
 
                                     </div>
 

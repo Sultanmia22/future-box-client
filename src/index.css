@@ -11,3 +11,6 @@
     @apply  md:pr-4 text-primary font-semibold
 }
 
+.image-gallery-description {
+  @apply text-center
+}

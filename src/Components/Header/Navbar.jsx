@@ -14,8 +14,8 @@ const Navbar = () => {
     <NavLink className='nav-text'>Home</NavLink>
     <NavLink to='/exploreArtwork' className='nav-text'>Explore Artworks</NavLink>
     {user && <>
-      <NavLink className='nav-text'>Add Artwork</NavLink>
-      <NavLink className='nav-text'>My Gallery</NavLink>
+      <NavLink to='/addArt' className='nav-text'>Add Artwork</NavLink>
+      <NavLink to='/mygallery' className='nav-text'>My Gallery</NavLink>
       <NavLink to='/myfavourite' className='nav-text'>My Favorites</NavLink>
     </>}
   </>
@@ -32,7 +32,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm border-b-2 border-primary">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
