@@ -1,9 +1,101 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ratingIcon from '../assets/star.png'
+import { Link } from 'react-router';
+import { AiFillLike } from 'react-icons/ai';
 
 const ExploreArtwork = () => {
+
+    const [artData, setArtData] = useState([])
+    const [fetchs,reFetchs] = useState(true)
+
+    useEffect(() => {
+        fetch(`http://localhost:4011/explore`)
+            .then(res => res.json())
+            .then(data => {
+                console.log('getting after data', data);
+                setArtData(data)
+            })
+    }, [fetchs])
+
+    //! handle Search function 
+    const handleSearch = (e) => {
+        e.preventDefault()
+        const searchText = e.target.searchValue.value;
+        
+        fetch(`http://localhost:4011/search?search=${searchText}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log('search after data',data)
+            setArtData(data)
+        })
+    }
+
+    //! handle Like Count function 
+     const handleLikeCount = (id) => {
+        fetch(`http://localhost:4011/likeCount/${id}`,{
+            method:'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            // console.log('after data',data)
+            reFetchs(!fetchs)
+        })
+    }
+
     return (
         <div>
-           explore artwork
+            <div className=' py-20 space-y-3'>
+                <h2 className='text-4xl font-semibold text-primary text-center'> Explore Inspiring Artworks from Talented Creators </h2>
+                <p className='text-center text-gray-500'>Explore the world of creativity where every color speaks emotion. From digital art to paintings, each masterpiece carries a story. Feel the passion, connect with imagination, and <br /> celebrate the beauty of art at ARTIFY.</p>
+
+                <div className='py-6 mx-4 md:mx-0'>
+                    <form onSubmit={handleSearch} className=' flex justify-center items-center gap-1'>
+                        <input type="text" className='input' name='searchValue' placeholder='Search'/>
+                        <button className='btn btn-primary'> Search </button>
+                    </form>
+                </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+                    {
+                        artData.map(data => 
+                            <div key={data._id} className='mx-4 md:mx-0'>
+                            <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
+                                <figure className=''>
+                                    <img
+                                        src={data.image}
+                                        alt="Shoes" className='w-full h-[300px] rounded-lg ' />
+
+                                </figure>
+                                <div className="">
+
+                                    <div className='flex justify-between items-center py-2'>
+
+                                        <div>
+                                            <h2 className="card-title text-2xl font-semibold">{data.title}</h2>
+                                            <p className='text-gray-500'>Artist : {data.artist_name}</p>
+                                        </div>
+                                        <div className='flex items-center gap-1'>
+                                             <img src={ratingIcon} alt="" className='w-3 h-3' />
+                                            <p>  {data.rating} </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+                                        <p className='text-gray-500'>Category : {data.category} </p>
+                                    </div>
+
+                                    <div className="flex justify-between pt-3 ">
+                                         <Link  onClick={() => handleLikeCount(data._id)} className='px-5 py-[1px] bg-primary rounded-full flex items-center gap-1'> <span><AiFillLike className='text-white' size={20} /></span> <span className='text-white font-bold'>{data.like_count}</span></Link>
+                                        <Link to={`/viewDetails/${data._id}`} className="btn btn-primary">View Details</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        )
+                    }
+                </div>
+            </div>
         </div>
     );
 };
