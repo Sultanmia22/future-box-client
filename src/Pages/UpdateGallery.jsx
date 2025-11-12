@@ -49,12 +49,12 @@ const UpdateGallery = () => {
     }
     
     return (
-       <div>
+       <div className='mx-4 md:mx-0 pb-10 md:pb-0'>
            <div className='text-center my-5 space-y-3'>
              <h2 className='text-4xl font-semibold text-primary'>Update Your Artwork</h2>
             
            </div>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto md:my-10">
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto md:my-10 ">
                 <div className="card-body border-2 border-primary rounded-lg">
                     <form onSubmit={handleUpdateArtwork}>
                         <fieldset className="fieldset">
