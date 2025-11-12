@@ -10,11 +10,13 @@ import MyFavourite from "../Pages/MyFavourite";
 import AddArtwork from "../Pages/AddArtwork";
 import MyGelary from "../Pages/MyGelary";
 import UpdateGallery from "../Pages/UpdateGallery";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<MainLayouts></MainLayouts>,
+    errorElement: <ErrorPage/>,
     children:[
       {
         index:true,
