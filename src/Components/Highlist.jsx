@@ -3,7 +3,7 @@ import { FaComment, FaHeart } from 'react-icons/fa';
 
 const Highlist = () => {
     return (
-        <div>
+        <div className='mx-4 md:mx-0'>
             <h2 className='text-4xl font-semibold text-center text-primary'>Community Highlights</h2>
             {/* card parent  */}
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5 py-6'>
