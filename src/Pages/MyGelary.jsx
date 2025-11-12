@@ -61,7 +61,7 @@ const MyGelary = () => {
 
             <div className='text-center space-y-3'>
                 <h2 className='text-4xl text-primary font-semibold'>Your World in Frames</h2>
-                <p className='text-gray-500'>Welcome to your personal gallery — a space where every picture tells a story. Here you can showcase your favorite memories, <br /> creative works, and special moments all in one place. Each photo captures a part of your journey, making this collection truly unique and meaningful</p>
+                <p className='text-gray-500 dark:text-white'>Welcome to your personal gallery — a space where every picture tells a story. Here you can showcase your favorite memories, <br /> creative works, and special moments all in one place. Each photo captures a part of your journey, making this collection truly unique and meaningful</p>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-3 py-5'>
@@ -81,13 +81,13 @@ const MyGelary = () => {
 
                                         <div>
                                             <h2 className="card-title text-2xl font-semibold">{data.title}</h2>
-                                            <p className='text-gray-500'>Artist : {data.artist_name}</p>
+                                            <p className='text-gray-500 dark:text-white'>Artist : {data.artist_name}</p>
                                         </div>
 
                                     </div>
 
                                     <div>
-                                        <p className='text-gray-500'>Category : {data.category} </p>
+                                        <p className='text-gray-500 dark:text-white'>Category : {data.category} </p>
                                     </div>
 
                                     <div className="card-actions justify-between py-3">

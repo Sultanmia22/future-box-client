@@ -8,7 +8,7 @@ const MyFavourite = () => {
 
     const { user } = use(AuthContext)
     const [favouriteData, setFavouriteData] = useState([])
-    const [fetchs,reFetchs] = useState(true)
+    const [fetchs, reFetchs] = useState(true)
 
     useEffect(() => {
         fetch(`http://localhost:4011/myfavourite?email=${user?.email}`)
@@ -17,40 +17,40 @@ const MyFavourite = () => {
                 console.log('after fetch data', data)
                 setFavouriteData(data)
             })
-    }, [user,fetchs])
+    }, [user, fetchs])
 
     //! handle unfavorite function 
     const handleUnfavorite = (id) => {
-        fetch(`http://localhost:4011/unfavorite/${id}`,{
-            method:'DELETE'
+        fetch(`http://localhost:4011/unfavorite/${id}`, {
+            method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log('after unfavorite ',data)
-            toast.success('Unfavorite Successfully');
-            reFetchs(!fetchs)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('after unfavorite ', data)
+                toast.success('Unfavorite Successfully');
+                reFetchs(!fetchs)
+            })
     }
 
-    if(favouriteData.length === 0){
+    if (favouriteData.length === 0) {
         return <div className='flex  flex-col justify-center items-center min-h-screen'>
             <img src={noDataImg} alt="" className='md:w-[300px] md:h-[300px]' />
-               <h2 className='text-3xl text-primary'> No Favourite Data Availabe </h2>
-              </div>
+            <h2 className='text-3xl text-primary'> No Favourite Data Availabe </h2>
+        </div>
     }
 
     return (
         <div>
             <div className='text-center py-6 space-y-3'>
                 <h2 className='text-4xl font-semibold text-primary'>Your Personal Art Collection</h2>
-                <p className='text-gray-500'>Welcome to your private gallery of inspiration. Here you’ll find all the artworks you’ve loved and saved <br /> a personal space to revisit your favorite creations, admire their beauty, and stay connected to the art that inspires your heart.</p>
+                <p className='text-gray-500 dark:text-white'>Welcome to your private gallery of inspiration. Here you’ll find all the artworks you’ve loved and saved <br /> a personal space to revisit your favorite creations, admire their beauty, and stay connected to the art that inspires your heart.</p>
             </div>
 
             <div className='grid grid-cols-1 gap-4 mb-10 md:mb-0 mx-4'>
                 {
                     favouriteData.map(data =>
 
-                        <div className='bg-white shadow p-4 flex flex-col md:flex-row md:justify-between rounded-lg'>
+                        <div className='bg-base-100 shadow p-4 flex flex-col md:flex-row md:justify-between rounded-lg'>
 
                             <div className='left_site'>
                                 <div className='flex flex-col md:flex-row gap-2'>

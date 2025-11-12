@@ -4,10 +4,10 @@ import { Link } from 'react-router';
 import { AiFillLike } from 'react-icons/ai';
 
 const ExploreArtwork = () => {
-
+    const [orginalData, setOrginalData] = useState([])
     const [artData, setArtData] = useState([])
     const [fetchs, reFetchs] = useState(true)
-    const [categories,setCategories] = useState([])
+    const [categories, setCategories] = useState([])
 
 
     useEffect(() => {
@@ -15,6 +15,7 @@ const ExploreArtwork = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log('getting after data', data);
+                setOrginalData(data)
                 setArtData(data)
             })
     }, [fetchs])
@@ -22,15 +23,15 @@ const ExploreArtwork = () => {
     //! useEffect for get all category 
     useEffect(() => {
         fetch(`http://localhost:4011/categorys`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log('after getting data',data)
-            setCategories(data)
-        })
-    },[])
+            .then(res => res.json())
+            .then(data => {
+                // console.log('after getting data',data)
+                setCategories(data)
+            })
+    }, [])
 
 
-   
+
 
     //! handle Search function 
     const handleSearch = (e) => {
@@ -41,7 +42,7 @@ const ExploreArtwork = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log('search after data', data)
-                
+
                 setArtData(data)
                 e.target.reset()
             })
@@ -49,13 +50,17 @@ const ExploreArtwork = () => {
 
     //! handle filter by category : 
     const handlefilter = (selectValue) => {
-        
+        if (selectValue === 'All') {
+            setArtData(orginalData)
+            return
+        }
+
         fetch(`http://localhost:4011/category?category=${selectValue}`)
             .then(res => res.json())
             .then(data => {
                 // console.log('search after data', data)
                 setArtData(data)
-                
+
             })
     }
 
@@ -75,15 +80,16 @@ const ExploreArtwork = () => {
         <div>
             <div className=' py-20 space-y-3'>
                 <h2 className='text-4xl font-semibold text-primary text-center'> Explore Inspiring Artworks from Talented Creators </h2>
-                <p className='text-center text-gray-500'>Explore the world of creativity where every color speaks emotion. From digital art to paintings, each masterpiece carries a story. Feel the passion, connect with imagination, and <br /> celebrate the beauty of art at ARTIFY.</p>
+                <p className='text-center text-gray-500 dark:text-white'>Explore the world of creativity where every color speaks emotion. From digital art to paintings, each masterpiece carries a story. Feel the passion, connect with imagination, and <br /> celebrate the beauty of art at ARTIFY.</p>
 
-                <div className='py-6 mx-4 md:mx-0 flex justify-between items-center'>
+                <div className='py-6 mx-4 md:mx-0 flex flex-col md:flex-row gap-5 justify-end md:justify-between md:items-center items-end'>
                     <div>
                         <form>
                             <select onChange={(e) => handlefilter(e.target.value)} defaultValue='Filter By Category' className="select select-primary">
                                 <option disabled={true}>Filter By Category</option>
+                                <option value="All">All</option>
                                 {
-                                    categories.map( cat => 
+                                    categories.map(cat =>
                                         <option value={cat}> {cat} </option>
                                     )
                                 }
@@ -113,14 +119,14 @@ const ExploreArtwork = () => {
 
                                             <div>
                                                 <h2 className="card-title text-2xl font-semibold">{data.title}</h2>
-                                                <p className='text-gray-500'>Artist : {data.artist_name}</p>
+                                                <p className='text-gray-500 dark:text-white'>Artist : {data.artist_name}</p>
                                             </div>
 
 
                                         </div>
 
                                         <div>
-                                            <p className='text-gray-500'>Category : {data.category} </p>
+                                            <p className='text-gray-500 dark:text-white'>Category : {data.category} </p>
                                         </div>
 
                                         <div className="flex justify-between pt-3 ">

@@ -1,5 +1,10 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @plugin "daisyui/theme" {
   name: "light";
@@ -8,7 +13,7 @@
   --color-secondary: #a01631;
 }
 .nav-text{
-    @apply  md:pr-4 text-primary font-semibold
+    @apply  md:pr-6 text-primary font-semibold
 }
 
 .image-gallery-description {

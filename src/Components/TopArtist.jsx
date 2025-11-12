@@ -4,8 +4,8 @@ import { Typewriter } from 'react-simple-typewriter';
 const TopArtist = () => {
     return (
         <div>
-           
-             <h2  className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={[' Top Artists of the Week']}  loop={true} typeSpeed={50} cursorStyle='|'   /> </h2>
+
+            <h2 className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={[' Top Artists of the Week']} loop={true} typeSpeed={50} cursorStyle='|' /> </h2>
             <div className='pb-20 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 <div>
 
@@ -29,8 +29,8 @@ const TopArtist = () => {
                                         <img src="https://www.stryx.com/cdn/shop/articles/man-looking-attractive.jpg?v=1666662774" alt="" className='w-15 h-15 object-cover rounded-full' />
                                     </figure>
                                     <div>
-                                        <p className='text-gray-500'>Artist : Isabella Martinez</p>
-                                        <p className='text-gray-500'>isabella.m@portraiture.com</p>
+                                        <p className='text-gray-500 dark:text-white'>Artist : Isabella Martinez</p>
+                                        <p className='text-gray-500 dark:text-white'>isabella.m@portraiture.com</p>
                                     </div>
                                 </div>
 
@@ -68,8 +68,8 @@ const TopArtist = () => {
                                         <img src="https://i.ibb.co.com/qMrCPbnt/ai-generated-caucasian-successful-confident-young-businesswoman-ceo-boss-bank-employee-worker-manage.jpg" alt="" className='w-15 h-15 object-cover rounded-full' />
                                     </figure>
                                     <div>
-                                        <p className='text-gray-500'>Artist : Sarah Thompson</p>
-                                        <p className='text-gray-500'>sarah.t@digitalcreative.com</p>
+                                        <p className='text-gray-500 dark:text-white'>Artist : Sarah Thompson</p>
+                                        <p className='text-gray-500 dark:text-white'>sarah.t@digitalcreative.com</p>
                                     </div>
                                 </div>
 
@@ -107,8 +107,8 @@ const TopArtist = () => {
                                         <img src="https://i.ibb.co.com/B2H69nQX/medium-shot-woman-posing-indoors-23-2149915935.jpg" alt="" className='w-15 h-15 object-cover rounded-full' />
                                     </figure>
                                     <div>
-                                        <p className='text-gray-500'>Artist : Yuki Tanaka</p>
-                                        <p className='text-gray-500'>yuki.tanaka@neonart.com</p>
+                                        <p className='text-gray-500 dark:text-white'>Artist : Yuki Tanaka</p>
+                                        <p className='text-gray-500 dark:text-white'>yuki.tanaka@neonart.com</p>
                                     </div>
                                 </div>
 

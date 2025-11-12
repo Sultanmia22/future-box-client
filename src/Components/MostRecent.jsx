@@ -5,8 +5,8 @@ const MostRecent = ({ artworkData }) => {
     // console.log(artworkData)   
     return (
         <div className='pb-20'>
-            <h2  className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={['Most Recent']}  loop={true}   /> </h2>
-            
+            <h2 className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={['Most Recent']} loop={true} /> </h2>
+
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
                     artworkData.map(data =>
@@ -25,13 +25,13 @@ const MostRecent = ({ artworkData }) => {
 
                                         <div>
                                             <h2 className="card-title text-2xl font-semibold">{data.title}</h2>
-                                            <p className='text-gray-500'>Artist : {data.artist_name}</p>
+                                            <p className='text-gray-500 dark:text-white'>Artist : {data.artist_name}</p>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div>
-                                        <p className='text-gray-500'>Category : {data.category} </p>
+                                        <p className='text-gray-500 dark:text-white'>Category : {data.category} </p>
                                     </div>
 
                                     <div className="card-actions justify-end">
@@ -44,7 +44,7 @@ const MostRecent = ({ artworkData }) => {
                     )
                 }
             </div>
-             
+
         </div>
     );
 };

@@ -5,11 +5,11 @@ import { AuthContext } from '../Auth/AuthContext';
 import { toast } from 'react-toastify';
 
 const ViewDetails = () => {
-    const {user} = use(AuthContext)
+    const { user } = use(AuthContext)
     const { id } = useParams()
     const [viewData, setViewData] = useState({})
     const [loading, setLoading] = useState(true)
-    const [fetchs,reFetchs] = useState(true)
+    const [fetchs, reFetchs] = useState(true)
 
     // const {id,image,title,artist_name,category,created_at,email,description,price,visibility,rating,medium,like_count,artist_info_name,artist_info_photo,artist_info_total_artworks} = viewData
 
@@ -21,53 +21,53 @@ const ViewDetails = () => {
                 setViewData(data)
                 setLoading(false)
             })
-    }, [id,fetchs])
+    }, [id, fetchs])
 
     //! handle like count fucntion 
     const handleLikeCount = (id) => {
-        fetch(`http://localhost:4011/likeCount/${id}`,{
-            method:'PATCH'
+        fetch(`http://localhost:4011/likeCount/${id}`, {
+            method: 'PATCH'
         })
-        .then(res => res.json())
-        .then(data => {
-            // console.log('after data',data)
-            reFetchs(!fetchs)
-        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log('after data',data)
+                reFetchs(!fetchs)
+            })
     }
 
     //! handle add to favourite artwork
     const handleAddFavourite = (id) => {
         const favData = {
-            image:viewData.image,
-            title:viewData.title,
-            artist_name:viewData.artist_name,
-            category:viewData.category,
-            created_at:viewData.created_at,
-            email:viewData.email,
-            description:viewData.description,
-            price:viewData.price,
-            visibility:viewData.visibility,
-            rating:viewData.rating,
-            medium:viewData.medium,
-            like_count:viewData.like_count,
-            artist_info_name:viewData.artist_info_name,
-            artist_info_photo:viewData.artist_info_photo,
-            artist_info_total_artworks:viewData.artist_info_total_artworks,
-            user_email:user.email,
+            image: viewData.image,
+            title: viewData.title,
+            artist_name: viewData.artist_name,
+            category: viewData.category,
+            created_at: viewData.created_at,
+            email: viewData.email,
+            description: viewData.description,
+            price: viewData.price,
+            visibility: viewData.visibility,
+            rating: viewData.rating,
+            medium: viewData.medium,
+            like_count: viewData.like_count,
+            artist_info_name: viewData.artist_info_name,
+            artist_info_photo: viewData.artist_info_photo,
+            artist_info_total_artworks: viewData.artist_info_total_artworks,
+            user_email: user.email,
         }
 
-        fetch(`http://localhost:4011/favouriteArt`,{
-            method:'POST',
-            headers:{
+        fetch(`http://localhost:4011/favouriteArt`, {
+            method: 'POST',
+            headers: {
                 'Content-type': 'application/json'
             },
-            body:JSON.stringify(favData)
+            body: JSON.stringify(favData)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log('after insert data',data)
-            toast.success('Add Favourite Successfully')
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('after insert data', data)
+                toast.success('Add Favourite Successfully')
+            })
 
     }
 
@@ -94,7 +94,7 @@ const ViewDetails = () => {
 
                 <div>
                     <h2 className='text-xl font-medium text-secondary'> Artist : {viewData.artist_name} </h2>
-                    <p className='text-justify text-gray-500 text-justify'>{viewData.description}</p>
+                    <p className='text-justify text-gray-500 dark:text-white text-justify'>{viewData.description}</p>
                 </div>
 
 
@@ -111,14 +111,14 @@ const ViewDetails = () => {
                         <div className='right-sise'>
                             <div className='text-center md:text-start'>
                                 <h2 className=' text-xl font-normal md:text-2xl text-gray-600 md:font-semibold pb-2'>Name : {viewData.artist_name}</h2>
-                                <p className='text-[18px]'>Total Artwork : {viewData.artist_info_total_artworks} </p>
+                                <p className='text-[18px] text-black'>Total Artwork : {viewData.artist_info_total_artworks} </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className='py-5 flex justify-between'>
-                    <Link  onClick={() => handleLikeCount(viewData._id)} className='px-5 py-[1px] bg-primary rounded-full flex items-center gap-1'> <span><AiFillLike className='text-white' size={20} /></span> <span className='text-white font-bold'>{viewData.like_count}</span></Link>
+                    <Link onClick={() => handleLikeCount(viewData._id)} className='px-5 py-[1px] bg-primary rounded-full flex items-center gap-1'> <span><AiFillLike className='text-white' size={20} /></span> <span className='text-white font-bold'>{viewData.like_count}</span></Link>
                     <button onClick={() => handleAddFavourite(viewData._id)} className='btn bg-primary text-white'>Add to Favorites</button>
                 </div>
             </div>
