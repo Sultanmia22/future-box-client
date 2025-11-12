@@ -1,14 +1,27 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Auth/AuthContext';
-import { toast } from 'react-toastify';
+import { useParams } from 'react-router';
 
-const AddArtwork = () => {
+const UpdateGallery = () => {
 
     const {user} = use(AuthContext)
+    const [data,setData] = useState({})
+    
+    const {id} = useParams()
 
-    //! Handle add art work 
-    const handleAddArtwork = (e) => {
-        e.preventDefault()
+    useEffect(() => {
+        fetch(`http://localhost:4011/updateGellary/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log('update after data',data)
+            setData(data)
+        })
+    },[id])
+
+   
+
+    const handleUpdateArtwork = (e) => {
+         e.preventDefault()
 
         const artist_name = e.target.user_name.value;
         const email = e.target.user_email.value;
@@ -19,35 +32,31 @@ const AddArtwork = () => {
         const description = e.target.description.value;
         const visibility = e.target.Visibility.value;
         const medium = e.target.medium.value;
-        
-        
-        const newData = {artist_name,email,title,image,category,created_at,description,visibility,medium,like_count:0,artist_info_photo:user?.photoURL}
 
-        fetch(`http://localhost:4011/addartwork`,{
-            method:'POST',
+        const updateData = {artist_name,email,title,image,category,created_at,description,visibility,medium,like_count:0,artist_info_photo:user?.PhotoURL};
+
+        fetch(`http://localhost:4011/updateMyGallery/${id}`,{
+            method:'PATCH',
             headers:{
-                'Content-type':'application/json',
+                'Content-type': 'application/json',
             },
-            body:JSON.stringify(newData)
+            body:JSON.stringify(updateData)
         })
         .then(res => res.json())
         .then(data => {
-            console.log('post after data',data)
-            toast.success('Add Artwork Successfully')
-            e.target.reset()
+            console.log('update after data',data)
         })
-        
     }
-
+    
     return (
-        <div>
+       <div>
            <div className='text-center my-5 space-y-3'>
-             <h2 className='text-4xl font-semibold text-primary'>Add Your Artwork</h2>
-            <p className='text-gray-500'>Welcome to my artwork page, where creativity meets emotion. Each piece reflects my thoughts, dreams, and experiences through vibrant colors and unique styles. <br /> Discover the stories behind every brushstroke and feel the connection between imagination, passion, and artistic expression.</p>
+             <h2 className='text-4xl font-semibold text-primary'>Update Your Artwork</h2>
+            
            </div>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto md:my-10">
                 <div className="card-body border-2 border-primary rounded-lg">
-                    <form onSubmit={handleAddArtwork}>
+                    <form onSubmit={handleUpdateArtwork}>
                         <fieldset className="fieldset">
                             {/* Name */}
                         <label className="label">User Name</label>
@@ -57,24 +66,25 @@ const AddArtwork = () => {
                         <input defaultValue={user?.email} type="email" readOnly className="input rounded-full" placeholder="Email" name='user_email' />
                         {/* Photo URL */}
                         <label className="label">Photo URL</label>
-                        <input type="text" className="input rounded-full" placeholder="Photo URL" name='photo_url' />
+                        <input defaultValue={data?.image} type="text" className="input rounded-full" placeholder="Photo URL" name='photo_url' />
                         {/* Title */}
                          <label className="label">Title</label>
-                        <input type="text" className="input rounded-full" placeholder="Photo URL" name='title' />
+                        <input defaultValue={data.title} type="text" className="input rounded-full" placeholder="Photo URL" name='title' />
                         {/* category */}
                         <label className="label">Category</label>
-                        <input type="text" className="input rounded-full" placeholder="Category" name='category' />
+                        <input defaultValue={data.category} type="text" className="input rounded-full" placeholder="Category" name='category' />
                         {/* Medium */}
                          <label className="label">Medium</label>
-                        <input type="text" className="input rounded-full" placeholder="Medium" name='medium' />
+                        <input defaultValue={data.medium} type="text" className="input rounded-full" placeholder="Medium" name='medium' />
                         {/* Visibility */}
                          <label className="label">Visibility</label>
-                        <input type="text" className="input rounded-full" placeholder="Medium" name='Visibility' />
+                        <input defaultValue={data.visibility} type="text" className="input rounded-full" placeholder="Medium" name='Visibility' />
                         {/* Description */}
                         <label className="label">Description</label>
-                        <textarea className='description p-2' placeholder='Write Your Description' name='description'></textarea>
+                        <textarea defaultValue={data.description} className='description p-2' placeholder='Write Your Description' name='description'></textarea>
+
                       
-                        <button className="btn btn-primary mt-4">Add Artwork</button>
+                        <button className="btn btn-primary mt-4">Update</button>
                     </fieldset>
                     </form>
                 </div>
@@ -83,4 +93,4 @@ const AddArtwork = () => {
     );
 };
 
-export default AddArtwork;
+export default UpdateGallery;

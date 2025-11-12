@@ -49,6 +49,9 @@ const ExploreArtwork = () => {
                 <p className='text-center text-gray-500'>Explore the world of creativity where every color speaks emotion. From digital art to paintings, each masterpiece carries a story. Feel the passion, connect with imagination, and <br /> celebrate the beauty of art at ARTIFY.</p>
 
                 <div className='py-6 mx-4 md:mx-0'>
+                    <div>
+
+                    </div>
                     <form onSubmit={handleSearch} className=' flex justify-center items-center gap-1'>
                         <input type="text" className='input' name='searchValue' placeholder='Search'/>
                         <button className='btn btn-primary'> Search </button>

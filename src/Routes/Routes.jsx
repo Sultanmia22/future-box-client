@@ -9,6 +9,7 @@ import ExploreArtwork from "../Pages/ExploreArtwork";
 import MyFavourite from "../Pages/MyFavourite";
 import AddArtwork from "../Pages/AddArtwork";
 import MyGelary from "../Pages/MyGelary";
+import UpdateGallery from "../Pages/UpdateGallery";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
         element:<PrivertRouts>
           <MyGelary/>
         </PrivertRouts>
+      },
+
+      {
+        path:'/updateGallery/:id',
+        element: <UpdateGallery/>
       }
     ]
   },

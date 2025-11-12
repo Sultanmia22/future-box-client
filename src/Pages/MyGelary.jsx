@@ -93,7 +93,7 @@ const MyGelary = () => {
                                     <div className="card-actions justify-between py-3">
 
                                         <div className='flex items-center gap-2'>
-                                            <button className="btn btn-info">Update</button>
+                                            <Link to={`/updateGallery/${data._id}`} className="btn btn-info">Update</Link>
                                             <Link onClick={() => handleMyGalleryDelete(data._id)} className="btn btn-warning">Delete</Link>
                                         </div>
 
