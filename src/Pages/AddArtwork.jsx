@@ -20,7 +20,8 @@ const AddArtwork = () => {
         const visibility = e.target.Visibility.value;
         const medium = e.target.medium.value;
         
-        const newData = {artist_name,email,title,image,category,created_at,description,visibility,medium,like_count:0}
+        
+        const newData = {artist_name,email,title,image,category,created_at,description,visibility,medium,like_count:0,artist_info_photo:user?.PhotoURL}
 
         fetch(`http://localhost:4011/addartwork`,{
             method:'POST',

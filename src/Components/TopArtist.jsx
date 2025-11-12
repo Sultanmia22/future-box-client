@@ -1,9 +1,11 @@
 import React from 'react';
+import { Typewriter } from 'react-simple-typewriter';
 
 const TopArtist = () => {
     return (
         <div>
-            <h2 className='text-4xl font-semibold text-primary text-center py-5'> Top Artists of the Week </h2>
+           
+             <h2  className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={[' Top Artists of the Week']}  loop={true} typeSpeed={50} cursorStyle='|'   /> </h2>
             <div className='pb-20 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 <div>
 

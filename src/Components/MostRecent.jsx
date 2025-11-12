@@ -1,13 +1,12 @@
 import React from 'react';
-import ratingIcon from '../assets/star.png'
 import { Link } from 'react-router';
+import { Typewriter } from 'react-simple-typewriter'
 const MostRecent = ({ artworkData }) => {
-    // console.log(artworkData)
-
-   
+    // console.log(artworkData)   
     return (
         <div className='pb-20'>
-            <h2 className='text-4xl font-semibold text-primary text-center py-5'> Most Recent </h2>
+            <h2  className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={['Most Recent']}  loop={true}   /> </h2>
+            
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
                     artworkData.map(data =>
@@ -45,6 +44,7 @@ const MostRecent = ({ artworkData }) => {
                     )
                 }
             </div>
+             
         </div>
     );
 };
