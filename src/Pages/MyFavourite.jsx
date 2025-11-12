@@ -46,21 +46,21 @@ const MyFavourite = () => {
                 <p className='text-gray-500'>Welcome to your private gallery of inspiration. Here you’ll find all the artworks you’ve loved and saved <br /> a personal space to revisit your favorite creations, admire their beauty, and stay connected to the art that inspires your heart.</p>
             </div>
 
-            <div className='grid grid-cols-1 gap-4'>
+            <div className='grid grid-cols-1 gap-4 mb-10 md:mb-0 mx-4'>
                 {
                     favouriteData.map(data =>
 
-                        <div className='bg-white shadow p-4 flex justify-between rounded-lg'>
+                        <div className='bg-white shadow p-4 flex flex-col md:flex-row md:justify-between rounded-lg'>
 
                             <div className='left_site'>
-                                <div className='flex gap-2'>
+                                <div className='flex flex-col md:flex-row gap-2'>
                                     <figure className=''>
                                         <img
                                             src={data.image}
                                             alt="Shoes" className='w-[100px] h-[100px] rounded-lg ' />
                                     </figure>
                                     <div className='space-y-2'>
-                                        <h2 className="card-title text-2xl font-semibold text-primary">{data.title}</h2>
+                                        <h2 className="card-title text-xl md:text-2xl font-semibold text-primary">{data.title}</h2>
                                         <button className='px-3 py-1 bg-secondary rounded-full text-white'>{data.category} </button>
 
                                         <div className='flex items-center gap-1'>
