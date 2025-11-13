@@ -23,7 +23,7 @@ const AddArtwork = () => {
         const medium = e.target.medium.value;
 
 
-        const newData = { artist_name, email, title, image, category, created_at, description, visibility, medium, like_count: 0, artist_info_photo: user?.photoURL }
+        const newData = { artist_name, email, title, image, category, created_at, description, visibility, medium, like_count: 0, artist_info_photo: user?.photoURL ,artist_info_total_artworks:1}
 
         fetch(`http://localhost:4011/addartwork`, {
             method: 'POST',
@@ -37,7 +37,7 @@ const AddArtwork = () => {
                 console.log('post after data', data)
                 toast.success('Add Artwork Successfully')
                 e.target.reset()
-                setLoading(false)
+                
             })
 
     }

@@ -3,6 +3,7 @@ import { AiFillLike } from 'react-icons/ai';
 import { Link, useParams } from 'react-router';
 import { AuthContext } from '../Auth/AuthContext';
 import { toast } from 'react-toastify';
+import Loading from './Loading';
 
 const ViewDetails = () => {
     const { user } = use(AuthContext)
@@ -10,6 +11,7 @@ const ViewDetails = () => {
     const [viewData, setViewData] = useState({})
     const [loading, setLoading] = useState(true)
     const [fetchs, reFetchs] = useState(true)
+
 
     // const {id,image,title,artist_name,category,created_at,email,description,price,visibility,rating,medium,like_count,artist_info_name,artist_info_photo,artist_info_total_artworks} = viewData
 
@@ -32,6 +34,7 @@ const ViewDetails = () => {
             .then(data => {
                 // console.log('after data',data)
                 reFetchs(!fetchs)
+                setLoading(false)
             })
     }
 
@@ -72,11 +75,11 @@ const ViewDetails = () => {
     }
 
     if (loading) {
-        return <div className='text-2xl text-center'> Loading </div>
+        return <Loading/>
     }
 
     return (
-        <div className='flex flex-col md:flex-row bg-base-100 shadow-sm my-10 p-10 rounded-xl gap-10'>
+        <div className='flex flex-col md:flex-row bg-base-100 shadow-sm my-10 p-10 rounded-xl gap-10 mx-4 md:mx-0'>
 
             <div className='left border-2 border-primary rounded-lg md:h-[800px]'>
                 <figure>
