@@ -1,11 +1,13 @@
 import React, { use } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Auth/AuthContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
     const { singInGoogle, loginUser } = use(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
+
 
     //! Handle login 
     const handleLogin = (e) => {
@@ -20,7 +22,7 @@ const Login = () => {
                 const users = res.user;
                 toast.success('Login Successfully')
                 e.target.reset()
-                navigate('/')
+                navigate(location.state ? location.state : '/')
             })
             .catch(er => {
                 const error = er.message;
@@ -35,7 +37,7 @@ const Login = () => {
                 const users = res.user;
                 // console.log(users)
                 toast.success('Registration Successfully')
-                navigate('/')
+                navigate(location.state ? location.state : '/')
             })
             .catch(er => {
                 const error = er.message;
