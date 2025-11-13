@@ -18,7 +18,7 @@ const Navbar = () => {
   },[theme])
 
   const links = <>
-    <NavLink className='nav-text'>Home</NavLink>
+    <NavLink to='/' className='nav-text'>Home</NavLink>
     <NavLink to='/exploreArtwork' className='nav-text'>Explore Artworks</NavLink>
     {user && <>
       <NavLink to='/addArt' className='nav-text'>Add Artwork</NavLink>
@@ -45,7 +45,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-100 shadow-sm border-b-2 border-primary">
+    <nav className="navbar bg-base-100 shadow-sm border-b-2 border-primary">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -140,7 +140,7 @@ const Navbar = () => {
             </div>
         }
       </div>
-    </div>
+    </nav>
   );
 };
 

@@ -19,3 +19,7 @@
 .image-gallery-description {
   @apply text-center
 }
+
+nav a.active{
+  color:#a01631 ;
+}
