@@ -67,13 +67,6 @@ const router = createBrowserRouter([
         </PrivertRouts>
       },
 
-      {
-        path:'/updateGallery/:id',
-        element: <PrivertRouts>
-          <UpdateGallery/>
-        </PrivertRouts>
-      },
-
     ]
   },
 ]);

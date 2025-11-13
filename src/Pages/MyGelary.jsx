@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import noDataImg from '../assets/download.png'
 import Loading from '../Components/Loading';
+import { toast } from 'react-toastify';
 
 const MyGelary = () => {
 
@@ -11,6 +12,8 @@ const MyGelary = () => {
     const [myart, setMyArt] = useState([])
     const [fetchs, refetchs] = useState(true)
     const [loading, setLoading] = useState(true)
+    const [updateData,setUpdateData] = useState({})
+    const [editingId,setEditingId] = useState(null)
 
     useEffect(() => {
         fetch(`https://future-box-server-pi.vercel.app/mygallery?email=${user.email}`)
@@ -51,6 +54,52 @@ const MyGelary = () => {
 
             })
     }
+
+    //! Handle show update modal 
+    const handleShowUpdateModal = (id) => {
+        setEditingId(id)
+                fetch(`https://future-box-server-pi.vercel.app/updateGellary/${id}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('update after data', data)
+                        setUpdateData(data)
+                    })
+            document.getElementById('my_modal_5').showModal()
+    }
+
+    const handleUpdateArtwork = (e) => {
+        e.preventDefault()
+
+        const artist_name = e.target.user_name.value;
+        const email = e.target.user_email.value;
+        const title = e.target.title.value;
+        const image = e.target.photo_url.value;
+        const category = e.target.category.value;
+        const created_at = new Date().toISOString().split('T')[0]
+        const description = e.target.description.value;
+        const visibility = e.target.Visibility.value;
+        const medium = e.target.medium.value;
+
+        const updateData = { artist_name, email, title, image, category, created_at, description, visibility, medium, like_count: 0, artist_info_photo: user?.PhotoURL };
+
+        fetch(`https://future-box-server-pi.vercel.app/updateMyGallery/${editingId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(updateData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('update after data', data)
+                refetchs(!fetchs)
+                toast.success('Update Your Artwork')
+            })
+
+           
+    }
+
+
 
     if (loading) {
         return <Loading />
@@ -100,7 +149,7 @@ const MyGelary = () => {
                                     <div className="card-actions justify-between py-3">
 
                                         <div className='flex items-center gap-2'>
-                                            <Link to={`/updateGallery/${data._id}`} className="btn btn-info">Update</Link>
+                                            <Link onClick={() => handleShowUpdateModal(data._id)} className="btn btn-info">Update</Link>
                                             <Link onClick={() => handleMyGalleryDelete(data._id)} className="btn btn-warning">Delete</Link>
                                         </div>
 
@@ -114,6 +163,51 @@ const MyGelary = () => {
                     )
                 }
             </div>
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+            
+            <dialog  id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto md:my-10 ">
+                        <div className="card-body border-2 border-primary rounded-lg">
+                            <form onSubmit={handleUpdateArtwork}>
+                                <fieldset className="fieldset">
+                                    {/* Name */}
+                                    <label className="label">User Name</label>
+                                    <input defaultValue={user?.displayName} type="text" readOnly className="input rounded-full" placeholder="Name" name='user_name' />
+                                    {/* email */}
+                                    <label className="label">User Email</label>
+                                    <input defaultValue={user?.email} type="email" readOnly className="input rounded-full" placeholder="Email" name='user_email' />
+                                    {/* Photo URL */}
+                                    <label className="label">Photo URL</label>
+                                    <input defaultValue={updateData?.image} type="text" className="input rounded-full" placeholder="Photo URL" name='photo_url' />
+                                    {/* Title */}
+                                    <label className="label">Title</label>
+                                    <input defaultValue={updateData.title} type="text" className="input rounded-full" placeholder="Photo URL" name='title' />
+                                    {/* category */}
+                                    <label className="label">Category</label>
+                                    <input defaultValue={updateData.category} type="text" className="input rounded-full" placeholder="Category" name='category' />
+                                    {/* Medium */}
+                                    <label className="label">Medium</label>
+                                    <input defaultValue={updateData.medium} type="text" className="input rounded-full" placeholder="Medium" name='medium' />
+                                    {/* Visibility */}
+                                    <label className="label">Visibility</label>
+                                    <input defaultValue={updateData.visibility} type="text" className="input rounded-full" placeholder="Medium" name='Visibility' />
+                                    {/* Description */}
+                                    <label className="label">Description</label>
+                                    <textarea defaultValue={updateData.description} className='description p-2' placeholder='Write Your Description' name='description'></textarea>
+
+
+                                    <button className="btn btn-primary mt-4">Update</button>
+                                    <form method="dialog">
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button className="btn btn-neutral">Close</button>
+                                    </form>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };
