@@ -72,7 +72,7 @@ const MyFavourite = () => {
 
                                         <div className='flex items-center gap-1'>
                                             <img src={ratingIcon} alt="" className='w-3 h-3' />
-                                            <p>  {data.rating} </p>
+                                            <p>  {data?.rating} </p>
                                         </div>
                                     </div>
                                 </div>

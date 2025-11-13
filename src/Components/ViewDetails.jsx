@@ -11,6 +11,7 @@ const ViewDetails = () => {
     const [viewData, setViewData] = useState({})
     const [loading, setLoading] = useState(true)
     const [fetchs, reFetchs] = useState(true)
+    const [toalArt,setTotalArt] = useState([])
 
 
     // const {id,image,title,artist_name,category,created_at,email,description,price,visibility,rating,medium,like_count,artist_info_name,artist_info_photo,artist_info_total_artworks} = viewData
@@ -74,6 +75,19 @@ const ViewDetails = () => {
 
     }
 
+
+    //! get total artwork 
+    useEffect(() => {
+        fetch(`http://localhost:4011/totalArt?email=${user?.email}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log('after get total artwork',data)
+           setTotalArt(data)
+        })
+    },[user])
+
+    
+
     if (loading) {
         return <Loading />
     }
@@ -114,7 +128,7 @@ const ViewDetails = () => {
                         <div className='right-sise'>
                             <div className='text-center md:text-start'>
                                 <h2 className=' text-xl font-normal md:text-2xl text-gray-600 md:font-semibold pb-2'>Name : {viewData.artist_name}</h2>
-                                <p className='text-[18px] text-black'>Total Artwork : {viewData.artist_info_total_artworks} </p>
+                                <p className='text-[18px] text-black'>Total Artwork : {toalArt.length} </p>
                             </div>
                         </div>
                     </div>
