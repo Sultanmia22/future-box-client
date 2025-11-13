@@ -9,11 +9,11 @@ const ExploreArtwork = () => {
     const [artData, setArtData] = useState([])
     const [fetchs, reFetchs] = useState(true)
     const [categories, setCategories] = useState([])
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
-        fetch(`http://localhost:4011/explore`)
+        fetch(`https://future-box-server-pi.vercel.app/explore`)
             .then(res => res.json())
             .then(data => {
                 // console.log('getting after data', data);
@@ -25,7 +25,7 @@ const ExploreArtwork = () => {
 
     //! useEffect for get all category 
     useEffect(() => {
-        fetch(`http://localhost:4011/categorys`)
+        fetch(`https://future-box-server-pi.vercel.app/categorys`)
             .then(res => res.json())
             .then(data => {
                 // console.log('after getting data',data)
@@ -41,7 +41,7 @@ const ExploreArtwork = () => {
         e.preventDefault()
         const searchText = e.target.searchValue.value;
 
-        fetch(`http://localhost:4011/search?search=${searchText}`)
+        fetch(`https://future-box-server-pi.vercel.app/search?search=${searchText}`)
             .then(res => res.json())
             .then(data => {
                 // console.log('search after data', data)
@@ -58,7 +58,7 @@ const ExploreArtwork = () => {
             return
         }
 
-        fetch(`http://localhost:4011/category?category=${selectValue}`)
+        fetch(`https://future-box-server-pi.vercel.app/category?category=${selectValue}`)
             .then(res => res.json())
             .then(data => {
                 // console.log('search after data', data)
@@ -69,7 +69,7 @@ const ExploreArtwork = () => {
 
     //! handle Like Count function 
     const handleLikeCount = (id) => {
-        fetch(`http://localhost:4011/likeCount/${id}`, {
+        fetch(`https://future-box-server-pi.vercel.app/likeCount/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -79,8 +79,8 @@ const ExploreArtwork = () => {
             })
     }
 
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
     return (

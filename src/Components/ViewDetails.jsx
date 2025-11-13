@@ -17,7 +17,7 @@ const ViewDetails = () => {
 
     //! fetch data for view details 
     useEffect(() => {
-        fetch(`http://localhost:4011/viewDetails/${id}`)
+        fetch(`https://future-box-server-pi.vercel.app/viewDetails/${id}`)
             .then(res => res.json())
             .then(data => {
                 setViewData(data)
@@ -27,7 +27,7 @@ const ViewDetails = () => {
 
     //! handle like count fucntion 
     const handleLikeCount = (id) => {
-        fetch(`http://localhost:4011/likeCount/${id}`, {
+        fetch(`https://future-box-server-pi.vercel.app/likeCount/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -59,7 +59,7 @@ const ViewDetails = () => {
             user_email: user.email,
         }
 
-        fetch(`http://localhost:4011/favouriteArt`, {
+        fetch(`https://future-box-server-pi.vercel.app/favouriteArt`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -75,7 +75,7 @@ const ViewDetails = () => {
     }
 
     if (loading) {
-        return <Loading/>
+        return <Loading />
     }
 
     return (

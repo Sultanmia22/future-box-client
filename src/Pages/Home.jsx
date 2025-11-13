@@ -7,29 +7,29 @@ import Loading from '../Components/Loading';
 
 const Home = () => {
 
-    const [artworkData,setartWorkData] = useState([])
-    const [loading,setLoading] = useState(true)
+    const [artworkData, setartWorkData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:4011/artworks`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log('after fetch data',data)
-            setartWorkData(data)
-            setLoading(false)
-        })
-    },[])
+        fetch(`https://future-box-server-pi.vercel.app/artworks`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log('after fetch data',data)
+                setartWorkData(data)
+                setLoading(false)
+            })
+    }, [])
 
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
     return (
         <div>
-           <Slider/>
-           <MostRecent artworkData={artworkData} />
-           <TopArtist/>
-           <Highlist/>
+            <Slider />
+            <MostRecent artworkData={artworkData} />
+            <TopArtist />
+            <Highlist />
         </div>
     );
 };

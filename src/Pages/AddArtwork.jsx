@@ -6,7 +6,7 @@ import Loading from '../Components/Loading';
 const AddArtwork = () => {
 
     const { user } = use(AuthContext)
-  
+
 
     //! Handle add art work 
     const handleAddArtwork = (e) => {
@@ -23,9 +23,9 @@ const AddArtwork = () => {
         const medium = e.target.medium.value;
 
 
-        const newData = { artist_name, email, title, image, category, created_at, description, visibility, medium, like_count: 0, artist_info_photo: user?.photoURL ,artist_info_total_artworks:1}
+        const newData = { artist_name, email, title, image, category, created_at, description, visibility, medium, like_count: 0, artist_info_photo: user?.photoURL, artist_info_total_artworks: 1 }
 
-        fetch(`http://localhost:4011/addartwork`, {
+        fetch(`https://future-box-server-pi.vercel.app/addartwork`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -37,12 +37,12 @@ const AddArtwork = () => {
                 console.log('post after data', data)
                 toast.success('Add Artwork Successfully')
                 e.target.reset()
-                
+
             })
 
     }
 
-  
+
 
     return (
         <div>

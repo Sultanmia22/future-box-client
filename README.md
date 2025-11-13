@@ -28,3 +28,5 @@ If you are developing a production application, we recommend using TypeScript wi
 - Tailwind CSS
 - Firebase Authentication
 - Node.js (for backend)
+
+-Live Website URL (https://artify-d6b69.web.app/)

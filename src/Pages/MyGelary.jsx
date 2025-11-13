@@ -10,10 +10,10 @@ const MyGelary = () => {
     const { user } = use(AuthContext)
     const [myart, setMyArt] = useState([])
     const [fetchs, refetchs] = useState(true)
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:4011/mygallery?email=${user.email}`)
+        fetch(`https://future-box-server-pi.vercel.app/mygallery?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log('after fetch data', data)
@@ -24,7 +24,7 @@ const MyGelary = () => {
 
     //! handle delete artwork form my gellarry 
     const handleMyGalleryDelete = (id) => {
-        fetch(`http://localhost:4011/mygalleryDetele/${id}`, {
+        fetch(`https://future-box-server-pi.vercel.app/mygalleryDetele/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -52,8 +52,8 @@ const MyGelary = () => {
             })
     }
 
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
     if (myart.length === 0) {

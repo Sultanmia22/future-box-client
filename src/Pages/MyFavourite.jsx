@@ -10,10 +10,10 @@ const MyFavourite = () => {
     const { user } = use(AuthContext)
     const [favouriteData, setFavouriteData] = useState([])
     const [fetchs, reFetchs] = useState(true)
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:4011/myfavourite?email=${user?.email}`)
+        fetch(`https://future-box-server-pi.vercel.app/myfavourite?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log('after fetch data', data)
@@ -24,7 +24,7 @@ const MyFavourite = () => {
 
     //! handle unfavorite function 
     const handleUnfavorite = (id) => {
-        fetch(`http://localhost:4011/unfavorite/${id}`, {
+        fetch(`https://future-box-server-pi.vercel.app/unfavorite/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -35,8 +35,8 @@ const MyFavourite = () => {
             })
     }
 
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
     if (favouriteData.length === 0) {
