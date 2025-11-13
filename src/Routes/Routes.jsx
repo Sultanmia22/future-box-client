@@ -9,7 +9,7 @@ import ExploreArtwork from "../Pages/ExploreArtwork";
 import MyFavourite from "../Pages/MyFavourite";
 import AddArtwork from "../Pages/AddArtwork";
 import MyGelary from "../Pages/MyGelary";
-import UpdateGallery from "../Pages/UpdateGallery";
+
 import ErrorPage from "../Pages/ErrorPage";
 import Loading from "../Components/Loading";
 

@@ -14,6 +14,7 @@ const MyGelary = () => {
     const [loading, setLoading] = useState(true)
     const [updateData,setUpdateData] = useState({})
     const [editingId,setEditingId] = useState(null)
+    const [open,setOpen] = useState(false)
 
     useEffect(() => {
         fetch(`https://future-box-server-pi.vercel.app/mygallery?email=${user.email}`)
@@ -64,7 +65,7 @@ const MyGelary = () => {
                         console.log('update after data', data)
                         setUpdateData(data)
                     })
-            document.getElementById('my_modal_5').showModal()
+            setOpen(true)
     }
 
     const handleUpdateArtwork = (e) => {
@@ -93,6 +94,7 @@ const MyGelary = () => {
             .then(data => {
                 console.log('update after data', data)
                 refetchs(!fetchs)
+                 setOpen(false)
                 toast.success('Update Your Artwork')
             })
 
@@ -165,7 +167,7 @@ const MyGelary = () => {
             </div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             
-            <dialog  id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+            <dialog open={open}  className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto md:my-10 ">
                         <div className="card-body border-2 border-primary rounded-lg">
