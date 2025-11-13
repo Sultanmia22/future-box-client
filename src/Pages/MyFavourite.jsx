@@ -4,11 +4,13 @@ import ratingIcon from '../assets/star.png'
 import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import noDataImg from '../assets/download.png'
+import Loading from '../Components/Loading';
 const MyFavourite = () => {
 
     const { user } = use(AuthContext)
     const [favouriteData, setFavouriteData] = useState([])
     const [fetchs, reFetchs] = useState(true)
+    const [loading,setLoading] = useState(true)
 
     useEffect(() => {
         fetch(`http://localhost:4011/myfavourite?email=${user?.email}`)
@@ -16,6 +18,7 @@ const MyFavourite = () => {
             .then(data => {
                 console.log('after fetch data', data)
                 setFavouriteData(data)
+                setLoading(false)
             })
     }, [user, fetchs])
 
@@ -30,6 +33,10 @@ const MyFavourite = () => {
                 toast.success('Unfavorite Successfully');
                 reFetchs(!fetchs)
             })
+    }
+
+    if(loading){
+        return <Loading/>
     }
 
     if (favouriteData.length === 0) {

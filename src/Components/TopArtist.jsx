@@ -20,7 +20,7 @@ const TopArtist = () => {
 
                             <div className='flex flex-col md:flex-row md:justify-between items-center py-4'>
                                 <h2 className='text-2xl font-semibold'> Portrait in Blue </h2>
-                                <h2 className=' text-gray-600'> Category : Portrait </h2>
+                                <h2 className=' text-gray-600 dark:text-white'> Category : Portrait </h2>
                             </div>
 
                             <div className='flex flex-col md:flex-row md:justify-between items-center'>
@@ -59,7 +59,7 @@ const TopArtist = () => {
 
                             <div className='flex flex-col md:flex-row md:justify-between items-center py-4'>
                                 <h2 className='text-2xl font-semibold'> Digital Dreams </h2>
-                                <h2 className=' text-gray-600'> Category : Digital Art </h2>
+                                <h2 className=' text-gray-600 dark:text-white'> Category : Digital Art </h2>
                             </div>
 
                             <div className='flex flex-col md:flex-row md:justify-between items-center'>
@@ -98,7 +98,7 @@ const TopArtist = () => {
 
                             <div className='flex flex-col md:flex-row md:justify-between items-center py-4'>
                                 <h2 className='text-2xl font-semibold'> Neon Nights </h2>
-                                <h2 className=' text-gray-600'> Category : Digital Art </h2>
+                                <h2 className=' text-gray-600 dark:text-white'> Category : Digital Art </h2>
                             </div>
 
                             <div className='flex flex-col md:flex-row md:justify-between items-center'>

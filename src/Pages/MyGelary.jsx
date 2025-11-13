@@ -3,12 +3,14 @@ import { AuthContext } from '../Auth/AuthContext';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import noDataImg from '../assets/download.png'
+import Loading from '../Components/Loading';
 
 const MyGelary = () => {
 
     const { user } = use(AuthContext)
     const [myart, setMyArt] = useState([])
     const [fetchs, refetchs] = useState(true)
+    const [loading,setLoading] = useState(true)
 
     useEffect(() => {
         fetch(`http://localhost:4011/mygallery?email=${user.email}`)
@@ -16,6 +18,7 @@ const MyGelary = () => {
             .then(data => {
                 console.log('after fetch data', data)
                 setMyArt(data)
+                setLoading(false)
             })
     }, [user, fetchs])
 
@@ -47,6 +50,10 @@ const MyGelary = () => {
                 });
 
             })
+    }
+
+    if(loading){
+        return <Loading/>
     }
 
     if (myart.length === 0) {

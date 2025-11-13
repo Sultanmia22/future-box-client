@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ratingIcon from '../assets/star.png'
 import { Link } from 'react-router';
 import { AiFillLike } from 'react-icons/ai';
+import Loading from '../Components/Loading';
 
 const ExploreArtwork = () => {
     const [orginalData, setOrginalData] = useState([])
     const [artData, setArtData] = useState([])
     const [fetchs, reFetchs] = useState(true)
     const [categories, setCategories] = useState([])
+    const [loading,setLoading] = useState(true)
 
 
     useEffect(() => {
@@ -17,6 +19,7 @@ const ExploreArtwork = () => {
                 // console.log('getting after data', data);
                 setOrginalData(data)
                 setArtData(data)
+                setLoading(false)
             })
     }, [fetchs])
 
@@ -74,6 +77,10 @@ const ExploreArtwork = () => {
                 // console.log('after data',data)
                 reFetchs(!fetchs)
             })
+    }
+
+    if(loading){
+        return <Loading/>
     }
 
     return (

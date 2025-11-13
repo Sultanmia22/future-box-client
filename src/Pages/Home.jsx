@@ -3,6 +3,7 @@ import Slider from '../Components/Slider';
 import MostRecent from '../Components/MostRecent';
 import TopArtist from '../Components/TopArtist';
 import Highlist from '../Components/Highlist';
+import Loading from '../Components/Loading';
 
 const Home = () => {
 
@@ -20,7 +21,7 @@ const Home = () => {
     },[])
 
     if(loading){
-        return <div className='flex justify-center items-center min-h-screen'> <p>Loading...</p> </div>
+        return <Loading/>
     }
 
     return (

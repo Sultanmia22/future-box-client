@@ -35,12 +35,12 @@ const Highlist = () => {
                     <div className='flex justify-between items-center pt-3'>
                         <div className='flex items-center gap-1'>
                             <span><FaHeart className='text-red-600' /></span>
-                            <span className='text-sm text-gray-600 font-semibold'> 3.2K </span>
+                            <span className='text-sm text-gray-600  dark:text-white font-semibold'> 3.2K </span>
                         </div>
 
                         <div className='flex items-center gap-1'>
                             <span><FaComment /></span>
-                            <span className='text-sm text-gray-600 font-semibold'> 1.3K </span>
+                            <span className='text-sm text-gray-600 dark:text-white font-semibold'> 1.3K </span>
                         </div>
                     </div>
                 </div>
@@ -72,12 +72,12 @@ const Highlist = () => {
                     <div className='flex justify-between items-center pt-3'>
                         <div className='flex items-center gap-1'>
                             <span><FaHeart className='text-red-600' /></span>
-                            <span className='text-sm text-gray-600 font-semibold'> 1.4K </span>
+                            <span className='text-sm text-gray-600 dark:text-white font-semibold'> 1.4K </span>
                         </div>
 
                         <div className='flex items-center gap-1'>
                             <span><FaComment /></span>
-                            <span className='text-sm text-gray-600 font-semibold'> 1.1K </span>
+                            <span className='text-sm text-gray-600 dark:text-white font-semibold'> 1.1K </span>
                         </div>
                     </div>
                 </div>
@@ -109,12 +109,12 @@ const Highlist = () => {
                     <div className='flex justify-between items-center pt-3'>
                         <div className='flex items-center gap-1'>
                             <span><FaHeart className='text-red-600' /></span>
-                            <span className='text-sm text-gray-600 font-semibold'> 4.2K </span>
+                            <span className='text-sm text-gray-600 dark:text-white font-semibold'> 4.2K </span>
                         </div>
 
                         <div className='flex items-center gap-1'>
                             <span><FaComment /></span>
-                            <span className='text-sm text-gray-600 font-semibold'> 4.1K </span>
+                            <span className='text-sm text-gray-600 dark:text-white font-semibold'> 4.1K </span>
                         </div>
                     </div>
                 </div>

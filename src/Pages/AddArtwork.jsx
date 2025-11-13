@@ -1,10 +1,12 @@
 import React, { use } from 'react';
 import { AuthContext } from '../Auth/AuthContext';
 import { toast } from 'react-toastify';
+import Loading from '../Components/Loading';
 
 const AddArtwork = () => {
 
     const { user } = use(AuthContext)
+  
 
     //! Handle add art work 
     const handleAddArtwork = (e) => {
@@ -35,9 +37,12 @@ const AddArtwork = () => {
                 console.log('post after data', data)
                 toast.success('Add Artwork Successfully')
                 e.target.reset()
+                setLoading(false)
             })
 
     }
+
+  
 
     return (
         <div>
