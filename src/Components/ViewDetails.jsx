@@ -78,7 +78,7 @@ const ViewDetails = () => {
 
     //! get total artwork 
     useEffect(() => {
-        fetch(`http://localhost:4011/totalArt?email=${user?.email}`)
+        fetch(`https://future-box-server-pi.vercel.app/totalArt?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
             console.log('after get total artwork',data)
