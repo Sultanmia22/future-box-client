@@ -7,9 +7,9 @@ const TopArtist = () => {
 
             <h2 className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={[' Top Artists of the Week']} loop={true} typeSpeed={50} cursorStyle='|' /> </h2>
             <div className='pb-20 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                <div>
+                <div >
 
-                    <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
+                    <div data-aos="zoom-in" className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                         <figure className=''>
                             <img
                                 src='https://i.ibb.co.com/LDL69bF3/16193152-thumbnail.jpg'
@@ -48,7 +48,7 @@ const TopArtist = () => {
                 </div>
 
                 <div>
-                    <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
+                    <div data-aos="zoom-in" className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                         <figure className=''>
                             <img
                                 src='https://i.ibb.co.com/B2VFztWV/Digital-Dreams.jpg'
@@ -87,7 +87,7 @@ const TopArtist = () => {
 
                 <div>
 
-                    <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
+                    <div data-aos="zoom-in" className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                         <figure className=''>
                             <img
                                 src='https://i.ibb.co.com/60mx9pqk/Neon-Nights.jpg'

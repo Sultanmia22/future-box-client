@@ -7,11 +7,11 @@ const MostRecent = ({ artworkData }) => {
         <div className='pb-20'>
             <h2 className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={['Most Recent']} loop={true} /> </h2>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+            <div  className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
                     artworkData.map(data =>
 
-                        <div key={data._id} className='mx-4 md:mx-0'>
+                        <div data-aos="zoom-in" key={data._id} className='mx-4 md:mx-0'>
                             <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                                 <figure className=''>
                                     <img
