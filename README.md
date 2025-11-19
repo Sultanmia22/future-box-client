@@ -8,7 +8,7 @@ Artwork is a full-stack MERN application that serves as a comprehensive digital 
 
 ![Artwork Gallery Demo](https://via.placeholder.com/800x400/EC4899/ffffff?text=Artwork+Gallery+Screenshot)
 
-**[🚀 Visit Artwork Live Site](your-live-link-here)**
+**[🚀 Visit Artwork Live Site](https://artify-d6b69.web.app/)**
 
 ## 🛠️ Technologies Used
 
@@ -140,6 +140,6 @@ npm run build
 
 ## 🔗 Important Links
 
-- **🌐 Live Website:** [Artwork Live](your-live-link-here)
-- **📂 Client Repository:** [Frontend Code](https://github.com/yourusername/artwork-client)
-- **📂 Server Repository:** [Backend Code](https://github.com/yourusername/artwork-server)
+- **🌐 Live Website:** [Artwork Live](https://artify-d6b69.web.app/)
+- **📂 Client Repository:** [Frontend Code](https://github.com/Sultanmia22/future-box-client.git)
+- **📂 Server Repository:** [Backend Code](https://github.com/Sultanmia22/future-box-server.git)
