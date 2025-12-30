@@ -12,7 +12,7 @@ const TopArtist = () => {
                     <div data-aos="zoom-in" className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                         <figure className=''>
                             <img
-                                src='https://i.ibb.co.com/LDL69bF3/16193152-thumbnail.jpg'
+                                src='https://i.ibb.co.com/nqVsTQZt/vivid-emotion-painting-stockcake.jpg'
                                 alt="Shoes" className='md:w-full md:h-[600px] rounded-lg object-cover' />
 
                         </figure>
@@ -51,7 +51,7 @@ const TopArtist = () => {
                     <div data-aos="zoom-in" className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                         <figure className=''>
                             <img
-                                src='https://i.ibb.co.com/B2VFztWV/Digital-Dreams.jpg'
+                                src='https://i.ibb.co.com/XrkdmsxS/pic02.jpg'
                                 alt="Shoes" className='md:w-full md:h-[600px] rounded-lg object-cover' />
 
                         </figure>
@@ -65,7 +65,7 @@ const TopArtist = () => {
                             <div className='flex flex-col md:flex-row md:justify-between items-center'>
                                 <div className='flex items-center gap-2'>
                                     <figure>
-                                        <img src="https://i.ibb.co.com/qMrCPbnt/ai-generated-caucasian-successful-confident-young-businesswoman-ceo-boss-bank-employee-worker-manage.jpg" alt="" className='w-15 h-15 object-cover rounded-full' />
+                                        <img src="https://i.ibb.co.com/tjRZcCz/top-avart-2.avif" alt="" className='w-15 h-15 object-cover rounded-full' />
                                     </figure>
                                     <div>
                                         <p className='text-gray-500 dark:text-white'>Artist : Sarah Thompson</p>
@@ -90,7 +90,7 @@ const TopArtist = () => {
                     <div data-aos="zoom-in" className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                         <figure className=''>
                             <img
-                                src='https://i.ibb.co.com/60mx9pqk/Neon-Nights.jpg'
+                                src='https://i.ibb.co.com/Sw1RsXGP/vibrant-pixel-art-city-street-night-neon-lights-rain-365532189.jpg'
                                 alt="Shoes" className='md:w-full md:h-[600px] rounded-lg object-cover' />
 
                         </figure>
@@ -104,7 +104,7 @@ const TopArtist = () => {
                             <div className='flex flex-col md:flex-row md:justify-between items-center'>
                                 <div className='flex items-center gap-2'>
                                     <figure>
-                                        <img src="https://i.ibb.co.com/B2H69nQX/medium-shot-woman-posing-indoors-23-2149915935.jpg" alt="" className='w-15 h-15 object-cover rounded-full' />
+                                        <img src="https://i.ibb.co.com/VcDkhSMt/top-avart-3.jpg" alt="" className='w-15 h-15 object-cover rounded-full' />
                                     </figure>
                                     <div>
                                         <p className='text-gray-500 dark:text-white'>Artist : Yuki Tanaka</p>
