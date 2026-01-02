@@ -104,7 +104,7 @@ const ExploreArtwork = () => {
                         </form>
                     </div>
                     <form onSubmit={handleSearch} className=' flex justify-center items-center gap-1'>
-                        <input type="text" className='input' name='searchValue' placeholder='Search' />
+                        <input type="text" className='input' name='searchValue' placeholder='Search by title' />
                         <button className='btn btn-primary'> Search </button>
                     </form>
                 </div>

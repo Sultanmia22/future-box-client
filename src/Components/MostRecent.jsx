@@ -1,13 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Typewriter } from 'react-simple-typewriter'
+import { TypeAnimation } from 'react-type-animation';
 const MostRecent = ({ artworkData }) => {
     // console.log(artworkData)   
     return (
         <div className='pb-20'>
-            <h2 className='text-4xl font-semibold text-primary text-center py-5'> <Typewriter words={['Most Recent']} loop={true} /> </h2>
+            <h2 className='text-4xl font-semibold text-primary text-center py-5'> <TypeAnimation
+                sequence={[
+                    'Most Recent',
+                    500,
 
-            <div  className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+                    '',
+                    500,
+                ]}
+                
+                repeat={Infinity}
+            />
+            </h2>
+
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
                     artworkData.map(data =>
 

@@ -25,6 +25,8 @@ const Navbar = () => {
       <NavLink to='/mygallery' className='nav-text'>My Gallery</NavLink>
       <NavLink to='/myfavourite' className='nav-text'>My Favorites</NavLink>
     </>}
+    <NavLink to='/contact' className='nav-text'>Contact</NavLink>
+    <NavLink to='/about' className='nav-text'>About</NavLink>
   </>
 
   //! handle sign out function
@@ -45,7 +47,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='bg-base-100 shadow-md border-b-2 border-primary sticky top-0 z-50'>
+    <div className='bg-base-100 shadow border-b-2 border-gray-50 sticky top-0 z-50'>
       <nav className="navbar max-w-[1600px] mx-auto md:py-4 ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -54,7 +56,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className=" dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow flex flex-col py-4 gap-2">
+              className=" dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow  flex flex-col py-4 gap-2 md:hidden">
               {links}
             </ul>
           </div>

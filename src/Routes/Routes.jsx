@@ -12,6 +12,8 @@ import MyGelary from "../Pages/MyGelary";
 
 import ErrorPage from "../Pages/ErrorPage";
 import Loading from "../Components/Loading";
+import Contact from "../Pages/Contact";
+import About from "../Pages/About";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,16 @@ const router = createBrowserRouter([
           <MyGelary/>
         </PrivertRouts>
       },
+
+      {
+        path: '/contact',
+        element: <Contact/>
+      },
+
+      {
+        path: '/about',
+        element: <About/>
+      }
 
     ]
   },
