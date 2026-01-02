@@ -12,9 +12,9 @@ const MyGelary = () => {
     const [myart, setMyArt] = useState([])
     const [fetchs, refetchs] = useState(true)
     const [loading, setLoading] = useState(true)
-    const [updateData,setUpdateData] = useState({})
-    const [editingId,setEditingId] = useState(null)
-    const [open,setOpen] = useState(false)
+    const [updateData, setUpdateData] = useState({})
+    const [editingId, setEditingId] = useState(null)
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         fetch(`https://future-box-server-pi.vercel.app/mygallery?email=${user.email}`)
@@ -59,13 +59,13 @@ const MyGelary = () => {
     //! Handle show update modal 
     const handleShowUpdateModal = (id) => {
         setEditingId(id)
-                fetch(`https://future-box-server-pi.vercel.app/updateGellary/${id}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log('update after data', data)
-                        setUpdateData(data)
-                    })
-            setOpen(true)
+        fetch(`https://future-box-server-pi.vercel.app/updateGellary/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log('update after data', data)
+                setUpdateData(data)
+            })
+        setOpen(true)
     }
 
     const handleUpdateArtwork = (e) => {
@@ -94,11 +94,11 @@ const MyGelary = () => {
             .then(data => {
                 console.log('update after data', data)
                 refetchs(!fetchs)
-                 setOpen(false)
+                setOpen(false)
                 toast.success('Update Your Artwork')
             })
 
-           
+
     }
 
 
@@ -126,7 +126,69 @@ const MyGelary = () => {
                 {
                     myart.map(data =>
                         <div key={data._id} className='mx-4 md:mx-0'>
-                            <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
+                            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-primary/30 hover:border-primary/60">
+                                <figure className='relative overflow-hidden rounded-xl mb-5'>
+                                    <img
+                                        src={data.image}
+                                        alt="Shoes"
+                                        className='w-full h-[300px] rounded-xl object-cover transform group-hover:scale-105 transition-transform duration-500' />
+                                    <div className='absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'></div>
+                                </figure>
+
+                                <div className="space-y-4">
+                                    <div className='flex justify-between items-start gap-3'>
+                                        <div className='flex-1'>
+                                            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 hover:text-primary transition-colors duration-300">
+                                                {data.title}
+                                            </h2>
+                                            <div className='flex items-center gap-2 text-gray-600 dark:text-gray-300'>
+                                                <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                                </svg>
+                                                <p className='text-sm font-medium'>Artist: <span className='text-gray-700 dark:text-gray-200 font-semibold'>{data.artist_name}</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className='inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 px-4 py-2 rounded-lg border border-primary/20'>
+                                        <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                        </svg>
+                                        <p className='text-sm font-semibold text-primary'>Category: {data.category}</p>
+                                    </div>
+
+                                    <div className="flex flex-wrap justify-between items-center gap-3 pt-2">
+                                        <div className='flex items-center gap-2'>
+                                            <Link
+                                                onClick={() => handleShowUpdateModal(data._id)}
+                                                className="px-5 py-2.5 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                </svg>
+                                                Update
+                                            </Link>
+                                            <Link
+                                                onClick={() => handleMyGalleryDelete(data._id)}
+                                                className="px-5 py-2.5 bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                                Delete
+                                            </Link>
+                                        </div>
+
+                                        <Link
+                                            to={`/viewDetails/${data._id}`}
+                                            className="px-6 py-2.5 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 dark:from-gray-600 dark:to-gray-700 dark:hover:from-gray-700 dark:hover:to-gray-800 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                                            View Details
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* <div className="card bg-base-100  shadow-sm p-5 rounded-lg border-2 border-primary">
                                 <figure className=''>
                                     <img
                                         src={data.image}
@@ -160,14 +222,14 @@ const MyGelary = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     )
                 }
             </div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            
-            <dialog open={open}  className="modal modal-bottom sm:modal-middle">
+
+            <dialog open={open} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto md:my-10 ">
                         <div className="card-body border-2 border-primary rounded-lg">

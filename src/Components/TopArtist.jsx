@@ -5,7 +5,7 @@ const TopArtist = () => {
     return (
         <div className='mx-4 md:mx-0'>
 
-            <h2 className='text-4xl font-semibold text-primary text-center py-5'> Top Artists of the Week </h2>
+            <h2 className='text-4xl font-semibold text-gray-900 dark:text-gray-100 text-center py-5'> Top Artists of the Week </h2>
             <div className='pb-20 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 <div >
 

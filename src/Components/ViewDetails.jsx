@@ -136,7 +136,7 @@ const ViewDetails = () => {
 
                 <div className='py-5 flex justify-between'>
                     <Link onClick={() => handleLikeCount(viewData._id)} className='px-5 py-[1px] bg-primary rounded-full flex items-center gap-1'> <span><AiFillLike className='text-white' size={20} /></span> <span className='text-white font-bold'>{viewData.like_count}</span></Link>
-                    <button onClick={() => handleAddFavourite(viewData._id)} className='btn bg-primary text-white'>Add to Favorites</button>
+                    <button onClick={() => handleAddFavourite(viewData._id)} className='btn bg-secondary text-white'>Add to Favorites</button>
                 </div>
             </div>
 

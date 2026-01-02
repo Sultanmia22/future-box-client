@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
@@ -10,7 +16,7 @@
   name: "light";
   default: true;
   --color-primary: #16a085;
-  --color-secondary: #a01631;
+  --color-secondary: #f0932b;
 }
 .nav-text{
     @apply   text-gray-900 font-semibold dark:text-gray-100
@@ -21,6 +27,10 @@
 }
 
 nav a.active{
- color: rgb(238, 134, 134);
- border-bottom: 2px solid rgb(238, 134, 134);
+ color: #f0932b;
+ border-bottom: 2px solid #f0932b;
+}
+
+.page-bg{
+  @apply bg-gradient-to-br from-teal-50 via-orange-50 to-white
 }

@@ -4,12 +4,12 @@ import { FaComment, FaHeart } from 'react-icons/fa';
 const Highlist = () => {
     return (
         <div className='mx-4 md:mx-0'>
-            <h2 className='text-4xl font-semibold text-center text-primary'>Community Highlights</h2>
+            <h2 className='text-4xl font-semibold text-center text-gray-900 dark:text-gray-100'>Community Highlights</h2>
             {/* card parent  */}
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5 py-6'>
 
                 {/* single card 1*/}
-                <div className=' bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
+                <div data-aos="fade-right" className=' bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
 
                     <div className='flex justify-between items-center'>
                         <div className='flex items-center gap-2'>
@@ -46,7 +46,7 @@ const Highlist = () => {
                 </div>
 
                 {/* single card 2*/}
-                <div className='bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
+                <div data-aos="flip-left" className='bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
 
                     <div className='flex justify-between items-center'>
                         <div className='flex items-center gap-2'>
@@ -83,7 +83,7 @@ const Highlist = () => {
                 </div>
 
                 {/* single card */}
-                <div className='bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
+                <div data-aos="fade-left" className='bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
 
                     <div className='flex justify-between items-center'>
                         <div className='flex items-center gap-2'>

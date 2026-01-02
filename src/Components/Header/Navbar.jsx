@@ -62,7 +62,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className=" text-xl text-primary font-bold">AR<span className='text-[#a01631]'>TI</span>FY</a>
+          <a className=" text-xl text-primary font-bold">AR<span className='text-secondary'>TI</span>FY</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 text-base space-x-4">
@@ -98,8 +98,8 @@ const Navbar = () => {
             user ?
               <div className='flex items-center gap-3 '>
                 <div>
-                  <div onClick={() => setShow(!show)} className='relative'>
-                    <figure className='border-2 border-primary rounded-full'>
+                  <div onClick={() => setShow(!show)} className='relative cursor-pointer'>
+                    <figure className='border-2 border-gray-900 rounded-full'>
                       <img src={user?.photoURL} alt="" className='w-13 h-13 p-1 rounded-full' />
                     </figure>
                   </div>
