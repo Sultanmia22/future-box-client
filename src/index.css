@@ -13,7 +13,7 @@
   --color-secondary: #a01631;
 }
 .nav-text{
-    @apply  md:pr-6 text-primary font-semibold
+    @apply   text-primary font-semibold
 }
 
 .image-gallery-description {
@@ -21,5 +21,6 @@
 }
 
 nav a.active{
-  color:#a01631 ;
+ color: rgb(238, 134, 134);
+ border-bottom: 2px solid rgb(238, 134, 134);
 }

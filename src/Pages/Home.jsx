@@ -26,7 +26,9 @@ const Home = () => {
 
     return (
         <div>
-            <Slider />
+           <div className='mt-5'>
+             <Slider />
+           </div>
             <MostRecent artworkData={artworkData} />
             <TopArtist />
             <Highlist />
