@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaPalette, FaCalendar, FaEdit } from 'react-icons/fa';
+import { AuthContext } from '../Auth/AuthContext';
 
 const MyProfile = () => {
+
+    const {user} = use(AuthContext);
+
     return (
         <div className="min-h-screen  dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4">
             <div className="max-w-4xl mx-auto">
@@ -12,7 +16,7 @@ const MyProfile = () => {
                         {/* Profile Image */}
                         <div className="relative">
                             <img 
-                                src="https://i.ibb.co.com/qkFHzmw/user.png" 
+                                src={user?.photoURL} 
                                 alt="Profile" 
                                 className="w-32 h-32 rounded-full object-cover border-4 border-primary shadow-lg"
                             />
@@ -24,7 +28,7 @@ const MyProfile = () => {
                         {/* Profile Info */}
                         <div className="flex-1 text-center md:text-left">
                             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                                John Doe
+                                {user?.displayName}
                             </h1>
                             <p className="text-lg text-primary font-semibold mb-3">
                                 Digital Artist
@@ -78,7 +82,7 @@ const MyProfile = () => {
                             </div>
                             <div>
                                 <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
-                                <p className="text-gray-900 dark:text-white font-medium">johndoe@example.com</p>
+                                <p className="text-gray-900 dark:text-white font-medium">{user?.email}</p>
                             </div>
                         </div>
 

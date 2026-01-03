@@ -4,57 +4,65 @@ import { AuthContext } from '../Auth/AuthContext';
 import { toast } from 'react-toastify';
 import { FcGoogle } from "react-icons/fc";
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
+import axios from 'axios';
+import { postUserInfo } from '../lib/userPost';
 
 const Registration = () => {
-
+    const { user } = use(AuthContext)
     const [showPass, setShowPass] = useState(false)
     const { creatUser, singInGoogle, updateUserProfile } = use(AuthContext)
     const navigate = useNavigate()
 
 
     //! Registration function 
-    const handleRegsiter = (e) => {
-        e.preventDefault()
+    const handleRegsiter = async (e) => {
+        try {
+            e.preventDefault()
 
-        const displayName = e.target.name.value;
-        const photoURL = e.target.photourl.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+            const displayName = e.target.name.value;
+            const photoURL = e.target.photourl.value;
+            const email = e.target.email.value;
+            const password = e.target.password.value;
 
-        // console.log({displayName,photoURL,email,password})
+            // console.log({displayName,photoURL,email,password})
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-        if (!passwordRegex.test(password)) {
-            toast.error('Must contain uppercase, lowercase letter,and minimum 6 characters')
-            return
+            if (!passwordRegex.test(password)) {
+                toast.error('Must contain uppercase, lowercase letter,and minimum 6 characters')
+                return
+            }
+
+            //! Creat User 
+            const users = await creatUser(email, password)
+
+            const updateUser = await updateUserProfile(displayName, photoURL)
+
+             postUserInfo(users.user)
+
+            toast.success('Registration Successfully')
+            e.target.reset()
+            navigate('/')
+
         }
-
-        //! Creat User 
-        creatUser(email, password)
-            .then(res => {
-                const users = res.user;
-
-                //! Update Profile 
-                updateUserProfile(displayName, photoURL)
-                    .then(res => {
-
-                    })
-                    .catch(er => {
-
-                    })
-
-                // console.log(users) 
-                toast.success('Registration Successfully')
-                e.target.reset()
-                navigate('/')
-            })
-            .catch(er => {
-                const error = er.message;
-                console.log(error)
-                toast.error(error)
-            })
+        catch (er) {
+            toast.error(er.message)
+        }
     }
+
+
+    /* const postUserInfo = async (user) => {
+       const userInfo = {
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+       };
+
+       const res = await axios.post('http://localhost:4011/setUserData',userInfo);
+       console.log(res)
+    } */
+
+
 
     //! Hangle google sign in
     const handleGoogleSignIn = () => {
