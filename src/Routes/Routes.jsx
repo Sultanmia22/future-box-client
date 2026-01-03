@@ -14,6 +14,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Loading from "../Components/Loading";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
+import MyProfile from "../Pages/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,11 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About/>
+      },
+
+      {
+        path: '/my-profile',
+        element: <MyProfile/>
       }
 
     ]

@@ -117,7 +117,7 @@ const Navbar = () => {
 
                      <div className='my-2'>
                       <ul className='space-y-2'>
-                        <Link className='flex items-center gap-2 font-medium '>
+                        <Link to='/my-profile' className='flex items-center gap-2 font-medium '>
                           <span> <FaRegUser size={18}/></span> 
                           <span>My Profile</span> 
                         </Link>

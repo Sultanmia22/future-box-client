@@ -18,7 +18,7 @@ const Contact = () => {
             subject: data.subject,
             message: data.message
         }
-        const res = await axios.post('http://localhost:4011/contacts',contactInfo) 
+        const res = await axios.post('https://future-box-server-pi.vercel.app/contacts',contactInfo) 
         reset()
         if(res.data.acknowledged){
             toast.success('Your Message Submited Successfully!')
