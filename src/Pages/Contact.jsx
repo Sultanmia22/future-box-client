@@ -1,9 +1,32 @@
 import React from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaClock } from 'react-icons/fa';
-
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import "leaflet/dist/leaflet.css";
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const Contact = () => {
+    const position = [23.8103, 90.4125]; 
+
+    const {register,handleSubmit,watch,formState: { errors },reset} = useForm()
+
+    const handleContact = async (data) => {
+
+        const contactInfo = {
+            name : data.name,
+            email: data.email,
+            subject: data.subject,
+            message: data.message
+        }
+        const res = await axios.post('http://localhost:4011/contacts',contactInfo) 
+        reset()
+        if(res.data.acknowledged){
+            toast.success('Your Message Submited Successfully!')
+        }
+    }
+
     return (
-        <div className="min-h-screen page-bg dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-4">
+        <div className="min-h-screen  dark:bg-gray-800 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-4">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-16">
@@ -11,7 +34,7 @@ const Contact = () => {
                         Get In <span className="text-primary">Touch</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                        Have questions or want to collaborate? We'd love to hear from you. 
+                        Have questions or want to collaborate? We'd love to hear from you.
                         Send us a message and we'll respond as soon as possible.
                     </p>
                 </div>
@@ -32,8 +55,8 @@ const Contact = () => {
                                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
                                         Drop us an email anytime
                                     </p>
-                                    <a 
-                                        href="mailto:support@artify.com" 
+                                    <a
+                                        href="mailto:support@artify.com"
                                         className="text-primary hover:text-primary/80 hover:underline font-semibold transition-colors"
                                     >
                                         support@artify.com
@@ -55,8 +78,8 @@ const Contact = () => {
                                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
                                         Mon-Fri from 9am to 6pm
                                     </p>
-                                    <a 
-                                        href="tel:+1234567890" 
+                                    <a
+                                        href="tel:+1234567890"
                                         className="text-primary hover:text-primary/80 hover:underline font-semibold transition-colors"
                                     >
                                         +1 (234) 567-890
@@ -116,16 +139,17 @@ const Contact = () => {
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
                                 Send Us a Message
                             </h2>
-                            <form className="space-y-6">
+                            <form onSubmit={handleSubmit(handleContact)} className="space-y-6">
                                 {/* Name Input */}
                                 <div>
-                                    <label 
-                                        htmlFor="name" 
+                                    <label
+                                        htmlFor="name"
                                         className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                                     >
                                         Your Name
                                     </label>
                                     <input
+                                    {...register('name')}
                                         type="text"
                                         id="name"
                                         name="name"
@@ -137,13 +161,14 @@ const Contact = () => {
 
                                 {/* Email Input */}
                                 <div>
-                                    <label 
-                                        htmlFor="email" 
+                                    <label
+                                        htmlFor="email"
                                         className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                                     >
                                         Email Address
                                     </label>
                                     <input
+                                    {...register('email')}
                                         type="email"
                                         id="email"
                                         name="email"
@@ -155,13 +180,14 @@ const Contact = () => {
 
                                 {/* Subject Input */}
                                 <div>
-                                    <label 
-                                        htmlFor="subject" 
+                                    <label
+                                        htmlFor="subject"
                                         className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                                     >
                                         Subject
                                     </label>
                                     <input
+                                    {...register('subject')}
                                         type="text"
                                         id="subject"
                                         name="subject"
@@ -173,13 +199,14 @@ const Contact = () => {
 
                                 {/* Message Textarea */}
                                 <div>
-                                    <label 
-                                        htmlFor="message" 
+                                    <label
+                                        htmlFor="message"
                                         className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                                     >
                                         Message
                                     </label>
                                     <textarea
+                                    {...register('message')}
                                         id="message"
                                         name="message"
                                         required
@@ -236,7 +263,22 @@ const Contact = () => {
                 </div>
 
                 {/* Map Section */}
-                <div className="mt-8">
+
+                <div className='w-full h-[500px]'>
+                    <MapContainer center={position} zoom={13}  className='w-full h-[500px]'>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <Marker position={position}>
+                            <Popup>
+                                A pretty CSS3 popup. <br /> Easily customizable.
+                            </Popup>
+                        </Marker>
+                    </MapContainer>,
+                </div>
+
+                {/*  <div className="mt-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
                         Find Us Here
                     </h2>
@@ -254,7 +296,7 @@ const Contact = () => {
                             ></iframe>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

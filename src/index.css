@@ -32,5 +32,5 @@ nav a.active{
 }
 
 .page-bg{
-  @apply bg-gradient-to-br from-teal-50 via-orange-50 to-white
+  @apply bg-gradient-to-br from-teal-50 via-orange-50 to-white 
 }

@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Slider = () => {
   return <div>
-    <Carousel>
+    <Carousel infiniteLoop='true' autoPlay='true'>
       <div className='h-[700px]'>
         <img src="https://i.ibb.co.com/kLN22wJ/Sunset-at-the-Beach.jpg" className='h-full object-cover w-full'/>
         

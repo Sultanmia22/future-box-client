@@ -2,7 +2,7 @@ import { FaPalette, FaUsers, FaHeart, FaRocket, FaLightbulb, FaHandshake } from 
 
 const About = () => {
   return (
-    <div className="min-h-screen page-bg dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen  dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       
       {/* Hero Section */}
       <section className="relative py-24 px-4 overflow-hidden mb-16">
