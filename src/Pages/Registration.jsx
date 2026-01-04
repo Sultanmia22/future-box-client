@@ -38,7 +38,7 @@ const Registration = () => {
 
             const updateUser = await updateUserProfile(displayName, photoURL)
 
-             postUserInfo(users.user)
+            postUserInfo(users.user)
 
             toast.success('Registration Successfully')
             e.target.reset()
@@ -51,32 +51,13 @@ const Registration = () => {
     }
 
 
-    /* const postUserInfo = async (user) => {
-       const userInfo = {
-        name: user?.displayName,
-        email: user?.email,
-        image: user?.photoURL,
-       };
-
-       const res = await axios.post('http://localhost:4011/setUserData',userInfo);
-       console.log(res)
-    } */
-
-
 
     //! Hangle google sign in
-    const handleGoogleSignIn = () => {
-        singInGoogle()
-            .then(res => {
-                const users = res.user;
-                // console.log(users)
-                toast.success('Registration Successfully')
-                navigate('/')
-            })
-            .catch(er => {
-                const error = er.message;
-                toast.error(error)
-            })
+    const handleGoogleSignIn = async () => {
+        const users = await singInGoogle()
+        postUserInfo(users.user)
+        toast.success('Registration Successfully')
+        navigate('/')
     }
 
     return (
