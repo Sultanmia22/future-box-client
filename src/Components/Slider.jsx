@@ -6,22 +6,28 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Slider = () => {
   return <div className='mx-4 md:mx-0'>
-    <Carousel infiniteLoop='true' autoPlay='true'>
+    <Carousel
+      infiniteLoop
+      autoPlay
+      swipeable={true}
+      emulateTouch={true}
+      showThumbs={false}
+    >
       <div className='lg:h-[700px]'>
-        <img src="https://i.ibb.co.com/kLN22wJ/Sunset-at-the-Beach.jpg" className='h-full object-cover w-full'/>
-        
+        <img src="https://i.ibb.co.com/kLN22wJ/Sunset-at-the-Beach.jpg" className='h-full object-cover w-full' />
+
       </div>
       <div className='lg:h-[700px]'>
-        <img src="https://i.ibb.co.com/XrkdmsxS/pic02.jpg" className='h-full object-cover w-full'/>
-        
+        <img src="https://i.ibb.co.com/XrkdmsxS/pic02.jpg" className='h-full object-cover w-full' />
+
       </div>
       <div className='lg:h-[700px]'>
-        <img src="https://i.ibb.co.com/Sw1RsXGP/vibrant-pixel-art-city-street-night-neon-lights-rain-365532189.jpg" className='h-full object-cover w-full'/>
-        
+        <img src="https://i.ibb.co.com/Sw1RsXGP/vibrant-pixel-art-city-street-night-neon-lights-rain-365532189.jpg" className='h-full object-cover w-full' />
+
       </div>
     </Carousel>
   </div>
-  
+
 };
 
 export default Slider;
