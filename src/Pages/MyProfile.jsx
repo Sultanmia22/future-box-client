@@ -32,7 +32,7 @@ const MyProfile = () => {
         const totalArtWork = async () => {
 
             try {
-                const result = await axios.get(`http://localhost:4011/myTotal-artwork/favourite/like/${user?.email}`);
+                const result = await axios.get(`https://future-box-server-pi.vercel.app/myTotal-artwork/favourite/like/${user?.email}`);
                 setTotal(result.data)
             }
             catch (er) {
@@ -60,7 +60,7 @@ const MyProfile = () => {
             specialty: data.specialty
         };
 
-        const updateResult = await axios.patch(`http://localhost:4011/user/updateInfo?email=${user?.email}`,updateInfo)
+        const updateResult = await axios.patch(`https://future-box-server-pi.vercel.app/user/updateInfo?email=${user?.email}`,updateInfo)
            
         if(updateResult.data.updateRes.modifiedCount){
             toast.success('Updated Succesfully!')
