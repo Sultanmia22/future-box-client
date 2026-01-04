@@ -84,7 +84,7 @@ const ExploreArtwork = () => {
     }
 
     return (
-        <div>
+        <div className='mx-4 md:mx-0'>
             <div className=' py-20 space-y-3'>
                 <h2 className='text-4xl font-semibold text-primary text-center'> Explore Inspiring Artworks from Talented Creators </h2>
                 <p className='text-center text-gray-500 dark:text-white'>Explore the world of creativity where every color speaks emotion. From digital art to paintings, each masterpiece carries a story. Feel the passion, connect with imagination, and <br /> celebrate the beauty of art at ARTIFY.</p>

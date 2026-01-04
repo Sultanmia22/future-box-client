@@ -9,7 +9,7 @@ const Highlist = () => {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5 py-6'>
 
                 {/* single card 1*/}
-                <div data-aos="fade-right" className=' bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
+                <div data-aos="flip-left" className=' bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
 
                     <div className='flex justify-between items-center'>
                         <div className='flex items-center gap-2'>
@@ -83,7 +83,7 @@ const Highlist = () => {
                 </div>
 
                 {/* single card */}
-                <div data-aos="fade-left" className='bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
+                <div data-aos="flip-left" className='bg-base-100 p-5 border-2 border-primary rounded-lg flex flex-col justify-between'>
 
                     <div className='flex justify-between items-center'>
                         <div className='flex items-center gap-2'>

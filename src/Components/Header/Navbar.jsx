@@ -11,6 +11,7 @@ const Navbar = () => {
 
   const { user, signOutUser } = use(AuthContext)
   const [show, setShow] = useState(false)
+  const [showNav, setShowNav] = useState(false)
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
   useEffect(() => {
@@ -48,19 +49,33 @@ const Navbar = () => {
     setTheme(checked ? 'dark' : 'light')
   }
 
+  const handleProfileDropDwon = () => {
+
+    setShow(!show)
+  }
+
+
+  // nav drop down handle
+  const handleNavDropDown = () => {
+    setShowNav(!showNav)
+  }
+
   return (
     <div className='bg-base-100 shadow border-b-2 border-gray-50 sticky top-0 z-50'>
       <nav className="navbar max-w-[1600px] mx-auto md:py-4 ">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div className="relative">
+            <div onClick={handleNavDropDown} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
             </div>
-            <ul
-              tabIndex="-1"
-              className=" dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow  flex flex-col py-4 gap-2 md:hidden">
-              {links}
-            </ul>
+            {
+              showNav &&
+              <ul
+                tabIndex='-1'
+                className=" absolute top-12 bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow  flex flex-col py-4 gap-2 md:hidden">
+                {links}
+              </ul>
+            }
           </div>
           <a className=" text-xl text-primary font-bold">AR<span className='text-secondary'>TI</span>FY</a>
         </div>
@@ -98,7 +113,7 @@ const Navbar = () => {
             user ?
               <div className='flex items-center gap-3 '>
                 <div>
-                  <div onClick={() => setShow(!show)} className='relative cursor-pointer'>
+                  <div onClick={handleProfileDropDwon} className='relative cursor-pointer' tabIndex={0}>
                     <figure className='border-2 border-gray-900 rounded-full'>
                       <img src={user?.photoURL} alt="" className='w-13 h-13 p-1 rounded-full' />
                     </figure>
@@ -107,32 +122,36 @@ const Navbar = () => {
                   {
                     show &&
                     <div className='absolute top-22 md:top-24 right-0 bg-base-100 p-2 md:p-5 rounded-xl w-[300px] shadow-md'>
-                     <div className="photo-section border-2 border-gray-100 py-3 md:py-5 rounded-xl">
+                      <div className="photo-section border-2 border-gray-100 py-3 md:py-5 rounded-xl">
                         <figure>
-                          <img src={user?.photoURL} alt="" className=' w-auto h-auto md:w-20 md:h-20 mx-auto rounded-full'/>
+                          <img src={user?.photoURL} alt="" className=' w-auto h-auto md:w-20 md:h-20 mx-auto rounded-full' />
                         </figure>
 
                         <h2 className='text-center text-base text-gray-600 dark:text-white font-medium'>{user?.displayName}</h2>
-                     </div>
+                      </div>
 
-                     <div className='my-2'>
-                      <ul className='space-y-2'>
-                        <Link to='/my-profile' className='flex items-center gap-2 font-medium '>
-                          <span> <FaRegUser size={18}/></span> 
-                          <span>My Profile</span> 
-                        </Link>
+                      <div className='my-2'>
+                        <ul className='space-y-2'>
+                          <Link
 
-                        <Link className='flex items-center gap-2 font-medium '>
-                          <span> <CiSettings size={18}/></span> 
-                          <span>Settings</span> 
-                        </Link>
+                            to='/my-profile' className='flex items-center gap-2 font-medium '>
+                            <span> <FaRegUser size={18} /></span>
+                            <span>My Profile</span>
+                          </Link>
 
-                         <button onClick={handleSignOut} className='flex items-center gap-2 font-medium cursor-pointer'>
-                          <span className='text-red-500'> <IoIosLogOut size={18}/></span> 
-                          <span>Logout</span> 
-                        </button>
-                      </ul>
-                     </div>
+                          <Link
+
+                            className='flex items-center gap-2 font-medium '>
+                            <span> <CiSettings size={18} /></span>
+                            <span>Settings</span>
+                          </Link>
+
+                          <button onClick={handleSignOut} className='flex items-center gap-2 font-medium cursor-pointer'>
+                            <span className='text-red-500'> <IoIosLogOut size={18} /></span>
+                            <span>Logout</span>
+                          </button>
+                        </ul>
+                      </div>
                     </div>
                   }
 
