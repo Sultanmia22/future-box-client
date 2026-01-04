@@ -15,78 +15,99 @@ import Loading from "../Components/Loading";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
 import MyProfile from "../Pages/MyProfile";
+import DashboardLayout from "../Layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<MainLayouts></MainLayouts>,
-    errorElement: <ErrorPage/>,
-    children:[
+    element: <MainLayouts></MainLayouts>,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        index:true,
-        element: <Home/>
+        index: true,
+        element: <Home />
       },
-      
+
       {
-        path:'/registration',
-        element:<Registration/>
+        path: '/registration',
+        element: <Registration />
       },
 
       {
         path: '/login',
-        element:<Login/>
+        element: <Login />
       },
 
       {
-        path:'/viewDetails/:id',
+        path: '/viewDetails/:id',
         element: <PrivertRouts>
-          <ViewDetails/>
+          <ViewDetails />
         </PrivertRouts>
       },
 
       {
-        path:'/exploreArtwork',
-        element:<ExploreArtwork/>
+        path: '/exploreArtwork',
+        element: <ExploreArtwork />
       },
 
-      {
-        path:'/myfavourite',
-        element:<PrivertRouts>
-          <MyFavourite/>
-        </PrivertRouts>
-      },
 
-      {
-        path:'/addArt',
-        element:<PrivertRouts>
-          <AddArtwork/>
-        </PrivertRouts>
-      },
-
-      {
-        path:'/mygallery',
-        element:<PrivertRouts>
-          <MyGelary/>
-        </PrivertRouts>
-      },
 
       {
         path: '/contact',
-        element: <Contact/>
+        element: <Contact />
       },
 
       {
         path: '/about',
-        element: <About/>
+        element: <About />
       },
 
       {
         path: '/my-profile',
-        element: <MyProfile/>
+        element: <MyProfile />
       }
 
     ]
   },
+
+  // dashboad layout
+
+  {
+    path: '/dahsboard',
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <PrivertRouts>
+          <AddArtwork />
+        </PrivertRouts>
+      },
+
+         {
+        path: '/dahsboard/addart',
+        element: <PrivertRouts>
+          <AddArtwork />
+        </PrivertRouts>
+      },
+
+
+      {
+        path: '/dahsboard/mygallery',
+        element: <PrivertRouts>
+          <MyGelary />
+        </PrivertRouts>
+      },
+
+
+      {
+        path: '/dahsboard/myfavourite',
+        element: <PrivertRouts>
+          <MyFavourite />
+        </PrivertRouts>
+      },
+
+    ]
+  }
 ]);
 
 export default router

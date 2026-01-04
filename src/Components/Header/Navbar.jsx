@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { FaRegUser } from "react-icons/fa";
 import { CiSettings } from 'react-icons/ci';
 import { IoIosLogOut } from 'react-icons/io';
+import { FiHome } from 'react-icons/fi';
 
 const Navbar = () => {
 
@@ -26,11 +27,7 @@ const Navbar = () => {
   const links = <>
     <NavLink to='/' className='nav-text'>Home</NavLink>
     <NavLink to='/exploreArtwork' className='nav-text'>Explore Artworks</NavLink>
-    {user && <>
-      <NavLink to='/addArt' className='nav-text'>Add Artwork</NavLink>
-      <NavLink to='/mygallery' className='nav-text'>My Gallery</NavLink>
-      <NavLink to='/myfavourite' className='nav-text'>My Favorites</NavLink>
-    </>}
+
     <NavLink to='/contact' className='nav-text'>Contact</NavLink>
     <NavLink to='/about' className='nav-text'>About</NavLink>
   </>
@@ -99,7 +96,7 @@ useEffect(() => {
               </ul>
             }
           </div>
-          <a className=" text-xl text-primary font-bold">AR<span className='text-secondary'>TI</span>FY</a>
+          <Link to='/' className=" text-xl text-primary font-bold">AR<span className='text-secondary'>TI</span>FY</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 text-base space-x-4">
@@ -159,6 +156,13 @@ useEffect(() => {
                             to='/my-profile' className='flex items-center gap-2 font-medium '>
                             <span> <FaRegUser size={18} /></span>
                             <span>My Profile</span>
+                          </Link>
+
+                           <Link
+
+                            to='/dahsboard' className='flex items-center gap-2 font-medium '>
+                            <span> <FiHome size={18} /> </span>
+                            <span>Dashboard</span>
                           </Link>
 
                           <Link
