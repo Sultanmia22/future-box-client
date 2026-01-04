@@ -1,5 +1,5 @@
 
-import { use, useEffect, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Auth/AuthContext';
 import { toast } from 'react-toastify';
@@ -13,6 +13,9 @@ const Navbar = () => {
   const [show, setShow] = useState(false)
   const [showNav, setShowNav] = useState(false)
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
+
+   const profileRef = useRef(null); // profile dropdown ref
+  const navRef = useRef(null); 
 
   useEffect(() => {
     const html = document.querySelector('html');
@@ -60,12 +63,31 @@ const Navbar = () => {
     setShowNav(!showNav)
   }
 
+useEffect(() => {
+  const handleClickOutside = (e) => {
+    // profile dropdown bahire click
+    if (profileRef.current && !profileRef.current.contains(e.target)) {
+      setShow(false);
+    }
+    // nav dropdown bahire click
+    if (navRef.current && !navRef.current.contains(e.target)) {
+      setShowNav(false);
+    }
+  };
+
+  document.addEventListener('click', handleClickOutside);
+
+  return () => {
+    document.removeEventListener('click', handleClickOutside);
+  };
+}, [])
+
   return (
     <div className='bg-base-100 shadow border-b-2 border-gray-50 sticky top-0 z-50'>
       <nav className="navbar max-w-[1600px] mx-auto md:py-4 ">
         <div className="navbar-start">
           <div className="relative">
-            <div onClick={handleNavDropDown} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div ref={navRef} onClick={handleNavDropDown} tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
             </div>
             {
@@ -113,7 +135,7 @@ const Navbar = () => {
             user ?
               <div className='flex items-center gap-3 '>
                 <div>
-                  <div onClick={handleProfileDropDwon} className='relative cursor-pointer' tabIndex={0}>
+                  <div ref={profileRef} onClick={handleProfileDropDwon} className='relative cursor-pointer' tabIndex={0}>
                     <figure className='border-2 border-gray-900 rounded-full'>
                       <img src={user?.photoURL} alt="" className='w-13 h-13 p-1 rounded-full' />
                     </figure>
